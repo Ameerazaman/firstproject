@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="javascript" href="/javascript.js">
+</head>
+
+<body>
+    <form action="/user/signup" method="post" id="signup-form">
+        <div style="height: auto;padding-top: 100px;" class="container">
+            <div class="left-section"></div>
+            <div class="right-section">
+                <div class="login-container">
+                    <form class="login-form">
+                        <h2 class="login-title"><i class="fas fa-user-circle"></i>Sign Up</h2>
+
+
+
+                        <div style="border: none;" class="form-control">
+                            <i class="fas fa-user icon"></i>
+                            <input type="text" placeholder="Username" id="username" name="username">
+                        </div>
+                        <p style="color: red; font-size: small;">{{this.message}}</p>
+                        <span style="color: red;" id="username-error"></span>
+                        <div style="border: none;" class="form-control">
+                            <i class="fa fa-envelope"></i>
+                            <input type="email" placeholder="email" id="email" name="email">
+                        </div>
+                        <span style="color: red;" id="email-error"></span>
+                        <div style="border: none;" class="form-control">
+                            <i class="fa fa-phone"></i>
+                            <input type="number" placeholder="Phone Number" id="mobile-number" name="mobile">
+                        </div>
+                        <span style="color: red;" id="mobile-error"></span>
+                        <div style="border: none;" class="form-control">
+                            <i class="fas fa-lock icon"></i>
+                            <input type="password" placeholder="Password" id="password" name="password">
+                        </div>
+                        <span style="color: red;" id="password-error"></span>
+                        <div style="border: none;" class="form-control">
+                            <i class="fa fa-check-circle"></i>
+                            <input type="password" placeholder="Confirm Password" id="confirm-password" name="confirm">
+                        </div>
+                        <span style="color: red;" id="confirm-password-error"></span>
+
+                        <button type="submit">Sign Up</button>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br><br>
+</body>
+
+</html>
+
+
+<script>
+
+    document.getElementById("signup-form").addEventListener('submit', (e) => {
+        var username = document.getElementById("username").value;
+        document.getElementById("username-error").innerHTML;
+
+        if (username === '') {
+            document.getElementById("username-error").innerHTML = 'This field is required'
+            e.preventDefault()
+        }
+        else if (/^\s|\s$/.test(username)) {
+            document.getElementById("username-error").innerHTML = 'Space are not allwed in begining and ending'
+            e.preventDefault()
+        }
+        {{!-- else if (!/^[a-zA-Z0-9]+$/.test(username)) {
+            document.getElementById('username-error').innerText = 'Username must contain only letters and numbers';
+            e.preventDefault()
+        } --}}
+
+
+
+        var email = document.getElementById("email").value
+        document.getElementById("email-error").innerHTML;
+        if (email === '') {
+            document.getElementById("email-error").innerHTML = "This field is required"
+            e.preventDefault()
+        }
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            document.getElementById('email-error').innerText = 'Invalid email address';
+            preventDefault()
+        }
+
+        var password = document.getElementById("password").value
+        document.getElementById("password-error").innerHTML;
+        if (password === '') {
+            document.getElementById("password-error").innerHTML = "This field is required"
+            e.preventDefault()
+        }
+        else if (/\s/.test(password)) {
+            document.getElementById('password-error').innerText = 'Password cannot contain spaces';
+            e.preventDefault()
+        }
+
+
+        var mobile = document.getElementById("mobile-number").value
+        document.getElementById("mobile-error").innerHTML;
+        if (mobile === '') {
+            document.getElementById("mobile-error").innerHTML = "This field is required"
+            e.preventDefault()
+        }
+        else if (/\s/.test(mobile)) {
+            document.getElementById('mobile-error').innerText = 'Mobile number cannot contain spaces';
+            e.preventDefault()
+        }
+
+        else if (mobile.length !== 10) {
+            document.getElementById('mobile-error').innerText = 'Mobile number contain 10 digits';
+            e.preventDefault()
+        }
+
+
+        var confirm = document.getElementById("confirm-password").value
+        document.getElementById("confirm-password-error").innerHTML;
+        if (confirm === '') {
+            document.getElementById("confirm-password-error").innerHTML = "This field is required"
+            e.preventDefault()
+        }
+        else if (password != confirm) {
+            document.getElementById('confirm-password-error').innerText = 'Password is not match';
+            e.preventDefault()
+        }
+        else if (/\s/.test(confirm)) {
+            document.getElementById('confirm-password-error').innerText = 'Mobile number cannot contain spaces';
+            e.preventDefault()
+        }
+    })
+</script>

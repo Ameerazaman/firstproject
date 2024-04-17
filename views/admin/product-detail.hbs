@@ -1,0 +1,172 @@
+{{!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* CSS used here will be applied after bootstrap.css */
+        .carousel {
+            margin-top: 20px;
+        }
+
+        .item .thumb {
+            width: 25%;
+            cursor: pointer;
+            float: left;
+        }
+
+        .item .thumb img {
+            width: 100%;
+            margin: 2px;
+        }
+
+        .item img {
+            width: 100%;
+        }
+
+        body {
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <html>
+
+    <head>
+        <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    </head>
+    <div style="margin: 50px;" class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div id="carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img style="height: 50%;width: 50%;margin-left: 20%;" src="/images/{{datas.image}}">
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div id="thumbcarousel" class="carousel slide" data-interval="false">
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                {{#each datas.subImage}}
+                                <div data-target="#carousel" data-slide-to="0" class="thumb"><img
+                                        style="height: 50%; width: 50%;" src="/images/{{this}}"></div>
+                                {{/each}}
+                            </div><!-- /item -->
+                            <div class="item">
+                                <div data-target="#carousel" data-slide-to="4" class="thumb"><img
+                                        src="http://placehold.it/100/612b65/fff&amp;text=Product+Image+5"></div>
+                                <div data-target="#carousel" data-slide-to="5" class="thumb"><img
+                                        src="http://placehold.it/100/00ffcc/000&amp;text=Product+Image+6"></div>
+                                <div data-target="#carousel" data-slide-to="6" class="thumb"><img
+                                        src="http://placehold.it/100/db371b/fff&amp;text=Product+Image+7"></div>
+                                <div data-target="#carousel" data-slide-to="7" class="thumb"><img
+                                        src="http://placehold.it/100/feb8aa/000&amp;text=Product+Image+8"></div>
+                            </div><!-- /item -->
+                        </div><!-- /carousel-inner -->
+
+                    </div> <!-- /thumbcarousel -->
+                </div><!-- /clearfix -->
+            </div> <!-- /col-sm-6 -->
+            <div style="padding: 10px;" class="col-sm-6">
+                <h2>Products</h2>
+                <h4>category: {{data.category}}</h4>
+                <h3>{{datas.product}}</h3><br>
+                <h4>Description: {{datas.description}}</h4><br>
+                <h3 style="color: green;">Price:{{datas.price}}</h3>
+                <h3 style="color: #9d0202;">Off:{{datas.discount}}</h3>
+                <h3 style="color: blue;">status :{{datas.status}}</h3>
+                <h3>sale of product:{{datas.stockLeft}}</h3>
+                <h3>Quantity:{{datas.quantity}}</h3>
+
+
+
+            </div> <!-- /col-sm-6 -->
+        </div> <!-- /row -->
+    </div> <!-- /container -->
+</body>
+
+</html> --}}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br><br><br><br><br>b
+     <div style="padding-top: 150px;" class="container table-responsive py-5">
+          <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+                <th scope="col">status</th>
+                <th scope="col">Offer</th>
+                <th scope="col">Discription</th>
+                <th scope="col">Subimages</th>
+              </tr>
+            </thead>
+            <tbody id="productBody">
+           
+              
+                <tr>
+                  <th scope="row">1</th>
+                  <td>{{datas.product}}</td>
+                    </td>
+                  <td>{{datas.quantity}}</td>
+                  <td>{{datas.category}}</td>
+
+                  <td>{{datas.price}}</td>
+                
+                  <td>{{datas.status}}</td> 
+                                  
+                  <td>{{datas.discount}}</td>                   
+                  <td>{{datas.description}}</td>                   
+                  <td style="display: flex;">
+                    <img style="height: 30px;width: 30px;" src="/images/{{datas.productImage1}}" alt="">
+                    <img style="height: 30px;width: 30px;" src="/images/{{datas.productImage2}}" alt="">
+                    <img style="height: 30px;width: 30px;" src="/images/{{datas.productImage3}}" alt="">
+                    <img style="height: 30px;width: 30px;" src="/images/{{datas.productImage4}}" alt="">
+                    
+                  </td>                   
+                 
+                  
+                </tr>
+              </a>
+
+             
+            </tbody>
+          </table>
+        </div>
+</body>
+</html>
+<script>
+    function displayPage(page) {
+      const startIndex = (page - 1) * productsPerPage;
+      const endIndex = startIndex + productsPerPage;
+
+      rows.forEach((row, index) => {
+        if (index >= startIndex && index < endIndex) {
+          row.style.display = 'table-row';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+</script>

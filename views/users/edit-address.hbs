@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --text-xs: 10px;
+            --text-s: 12px;
+            --text-m: 14px;
+            --text-l: 24px;
+            --one-em: 14px;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: inherit;
+            color: inherit;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #4E5150;
+            margin: 0;
+            padding: 0;
+        }
+
+        #checkout-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 475px;
+        }
+
+        .check-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 475px;
+        }
+
+        form>section:first-child {
+            margin-bottom: 50px;
+        }
+
+        form>section>h3 {
+            font-size: var(--text-m);
+            font-weight: 600;
+            color: #333;
+        }
+
+        form .form-group:not(:last-child) {
+            margin-bottom: 12px;
+        }
+
+        form .form-groups {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 25px;
+        }
+
+        form .form-group>label {
+            font-size: var(--text-xs);
+            color: #4F4F4F;
+            font-weight: 600;
+        }
+
+        form .form-group>div {
+            position: relative;
+            margin-top: 7px;
+        }
+
+        form .form-group .material-icons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 15px;
+            font-size: var(--text-m);
+            color: #828282;
+        }
+
+        form .form-group input,
+        form .form-group select {
+            width: 100%;
+            padding: 12px 10px 12px 42px;
+            border-radius: 12px;
+            border: 1px solid #828282;
+            outline: none;
+            font-weight: 600;
+            font-size: var(--text-s);
+        }
+
+        option:disbled {
+            color: #828282;
+        }
+
+        form .form-group,
+        form .form-groups {
+            max-width: 475px;
+        }
+
+        form .form-group.checkbox {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        #save-info {
+            width: auto;
+        }
+
+        #save-info~label {
+            text-align: center;
+        }
+
+        form>button {
+            background-color: #4aa6f2;
+            outline: none;
+            border: 1px solid #4abaf2;
+            border-radius: 12px;
+            color: #FFF;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 20px;
+            padding: 17px 45px;
+            float: right;
+            margin-top: 24px;
+            transition: all .3s ease;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+
+        form>button:hover {
+            background: transparent;
+            color: #4adef2;
+        }
+
+        footer {
+            margin-top: 90px;
+        }
+
+        footer>p {
+            font-size: 14px;
+            line-height: 17px;
+            font-weight: 600;
+            color: #BDBDBD;
+            text-align: center;
+        }
+
+        footer>p>a {
+            font-weight: 700;
+        }
+
+        @media only screen and (min-width: 768px) {
+            .global-container {
+                max-width: 1000px;
+                padding: 0 25px;
+            }
+
+            .cart-preview {
+                float: right;
+                margin-left: 90px;
+            }
+        }
+
+        @media only screen and (min-width: 900px) {
+            :root {
+                --text-xs: 12px;
+                --text-s: 16px;
+                --text-m: 18px;
+                --text-l: 36px;
+                --one-em: 22px;
+            }
+        }
+
+        button {
+            background-color: rgb(26, 142, 245);
+        }
+    </style>
+</head>
+
+<body>
+    <form style="height: auto;padding-top:20px;width: auto;margin-left: 5%;"
+        action="/checkOut/edit-address/{{data._id}}" method="post" id="checkout-form">
+        <section style="padding: 20px;" id="Address">
+            <h3>Shipping address</h3>
+            <div class="form-group">
+                <label for="fullname">Full name</label>
+                <div>
+                    <input type="text" id="fullname" name="fullname" placeholder="Your full name..."
+                        value="{{data.fullname}}" />
+                    <span class="text-danger" id="fullname-error"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <div>
+
+                    <input type="text" id="address" placeholder="Your address..." name="address"
+                        value="{{data.address}}" />
+                    <span class="text-danger" id="address-error"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <div>
+
+                    <input type="text" id="city" name="city" placeholder="Your city..." value="{{data.city}}" />
+                    <span class="text-danger" id="city-error"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="city">Phone</label>
+                <div>
+                    <input value="{{data.phone}}" type="Number" id="phone" name="phone"
+                        placeholder="Your Phone Number..." />
+                    <span class="text-danger" id="phone-error"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="city">Email</label>
+                <div>
+                    <input value="{{data.email}}" type="text" id="email" name="email" placeholder="Your Email..." />
+                    <span class="text-danger" id="email-error"></span>
+                </div>
+            </div>
+            <div class="form-groups">
+                <div class="form-group">
+                    <label for="country">State</label>
+                    <div>
+
+                        <select name="state" id="state">
+                            <option disabled selected>Your state...</option>
+                            <option>Kerala</option>
+                            <option>karnadaka</option>
+                            <option>Thamilnadu</option>
+                            <option>Andra</option>
+                            <option>Delhi</option>
+                            <option>Punjab</option>
+                        </select>
+                        <span class="text-danger" id="state-error"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="postal-code">Postal code</label>
+                    <div>
+
+                        <input type="text" value="{{data.postalcode}}" id="postal-code" name="postalcode"
+                            placeholder="Your postal code..." />
+                        <span class="text-danger" id="postalcode-error"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input style="background-color: rgb(255, 82, 19);" type="submit" value="Save" placeholder="Save">
+            </div>
+        </section>
+    </form>
+</body>
+
+</html>
+<script>
+
+
+    document.getElementById("checkout-form").addEventListener('submit', (e) => {
+            var fullname = document.getElementById("fullname").value;
+            var fullnameError = document.getElementById("fullname-error");
+            if (fullname.trim() === '') {
+                document.getElementById("fullname-error").innerHTML = 'This field is required';
+                e.preventDefault();
+            }
+            else if (/^\s|\s$/.test(fullname)) { // Check for spaces at the beginning or end
+                document.getElementById("fullname-error").innerHTML = 'Spaces at beginning or end are not allowed';
+                e.preventDefault();
+            }
+
+            var address = document.getElementById("address").value;
+            document.getElementById("address-error").innerHTML;
+            if (address.trim() === '') {
+                document.getElementById("address-error").innerHTML = 'This field is required'
+                e.preventDefault()
+            }
+            else if (/^\s|\s$/.test(address)) {
+                document.getElementById("address-error").innerHTML = 'space are not allowed'
+                e.preventDefault()
+            }
+
+
+            var city = document.getElementById("city").value;
+            document.getElementById("city-error").innerHTML;
+            if (city.trim() === '') {
+                document.getElementById("city-error").innerHTML = 'This field is required'
+                e.preventDefault()
+            }
+           else if (/^\s|\s$/.test(city)) {
+                document.getElementById("city-error").innerHTML = 'space are not allowed'
+                e.preventDefault()
+            }
+
+
+            var state = document.getElementById("state").value;
+            document.getElementById("state-error").innerHTML;
+            if (state.trim() === '') {
+                document.getElementById("state-error").innerHTML = 'This field is required'
+                e.preventDefault()
+            }
+            else if (/^\s|\s$/.test(state)) {
+                document.getElementById("state-error").innerHTML = 'space are not allowed'
+                e.preventDefault()
+            }
+
+
+            var email = document.getElementById("email").value;
+            document.getElementById("email-error").innerHTML;
+            if (email.trim() === '') {
+                document.getElementById("email-error").innerHTML = 'This field is required'
+                e.preventDefault()
+            }
+            else if (/^\s|\s$/.test(email)) {
+                document.getElementById("email-error").innerHTML = 'space are not allowed'
+                e.preventDefault()
+            }
+            var phone = document.getElementById("phone").value;
+            document.getElementById("phone-error").innerHTML;
+            if (phone.trim() === '') {
+                document.getElementById("phone-error").innerHTML = 'This field is required'
+                e.preventDefault()
+            }
+            else if (phone.length !== 10) {
+                document.getElementById("phone-error").innerHTML = 'Required 10 digits'
+                e.preventDefault()
+            }
+            else if (/^\s|\s$/.test(phone)) {
+                document.getElementById("phone-error").innerHTML = 'space are not allowed'
+                e.preventDefault()
+            }
+
+
+            var postalcode = document.getElementById("postal-code").value;
+            document.getElementById("postalcode-error").innerHTML;
+            if (postalcode.trim() === '') {
+                document.getElementById("postalcode-error").innerHTML = 'This field is required'
+                e.preventDefault()
+            }
+            else if (/\s/.test(postalcode)) {
+                document.getElementById("postalcode-error").innerHTML = 'space are not allowed'
+                e.preventDefault()
+            }
+        })
+</script>

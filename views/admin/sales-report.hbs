@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  
+                   initial-scale=1.0">
+    <title>GeeksForGeeks</title>
+
+    <link rel="stylesheet" href="/dashboard.css">
+    {{!-- pagination --}}
+
+
+    <style>
+        .dropbtn {
+            background-color: #ffffff;
+            color: rgb(34, 33, 33);
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fbfcfd;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            padding: 15px;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #e7e5e5
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #e3dfdf;
+        }
+
+        a {
+            text-decoration: none;
+            color: rgb(77, 76, 76);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+
+        .pagination {
+            margin-top: 10px;
+        }
+
+        .pagination button {
+            margin-right: 5px;
+        }
+
+        .pagination button.active {
+            font-weight: bold;
+        }
+
+        button {
+            padding: 8px;
+            border-radius: 10px;
+            background-color: rgb(58, 86, 249);
+            color: aliceblue;
+
+        }
+
+        button:hover {
+            background-color: blue;
+        }
+
+        p,
+        a,
+        button,
+        h5,
+        h4,
+        h3,
+        h2,
+        h1,
+        th,
+        td {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+
+    <div class="main-container">
+
+        <div class="navcontainer">
+            <nav class="nav">
+                <div>
+                    <div style="background-color: rgb(47, 47, 189);" class="option1 nav-option">
+                        <img src="/images/download.png" class="nav-img" alt="dashboard">
+                        <h5 style="color:white;background-color:  ;"> Main Menu</h5>
+                    </div>
+
+                    <div class="option2 nav-option">
+                        <img src="/images/dashboard.png" class="nav-img" alt="dashboard">
+                        <a href="/admin/dashboard">
+                            <h5> Dashboard</h5>
+                        </a>
+                    </div>
+
+                    <div class="option2 nav-option">
+                        <img src="/images/products.png" class="nav-img" alt="articles">
+                        <a href="/admin/product">
+                            <h5>Products</h5>
+                        </a>
+                    </div>
+
+                    <div class="nav-option option3">
+                        <img src="/images/catogary.png" class="nav-img" alt="report">
+                        <a href="/admin/category">
+                            <h5>Category</h5>
+                        </a>
+                    </div>
+
+                    <div class="nav-option option4">
+                        <img src="/images/order.png" class="nav-img" alt="institution">
+                        <a href="/order">
+                            <h5>Orders</h5>
+                        </a>
+                    </div>
+
+                    <div class="nav-option option5">
+                        <img src="/images/new coupon.png" class="nav-img" alt="blog">
+                        <a href="/coupon">
+                            <h5>Coupon</h5>
+                        </a>
+                    </div>
+
+                    <div class="nav-option option6">
+                        <img src="/images/coupon.png" class="nav-img" alt="settings">
+                        <a href="/referaloffer">
+                            <h5> Offer</h5>
+                        </a>
+                    </div>
+                    <div class="nav-option option6">
+                        <img src="/images/customers.png" class="nav-img" alt="settings">
+                        <a href="/admin/customers">
+                            <h5>Customers</h5>
+                        </a>
+                    </div>
+
+                    <div class="nav-option logout">
+                        <img src="/images/logout.png" class="nav-img" alt="logout">
+                        <a href="/admin/logout">
+                            <h5>Logout</h5>
+                        </a>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+        <div class="main">
+
+            <div class="searchbar2">
+                <input type="text" name="" id="" placeholder="Search">
+                <div class="searchbtn">
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png"
+                        class="icn srchicn" alt="search-button">
+                </div>
+            </div>
+
+            {{!-- <div class="box-container">
+
+                <div class="box box1">
+                    <div class="text">
+                        <h2 class="topic-heading">60.5k</h2>
+                        <h2 class="topic">Article Views</h2>
+                    </div>
+
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(31).png"
+                        alt="Views">
+                </div>
+
+                <div class="box box2">
+                    <div class="text">
+                        <h2 class="topic-heading">150</h2>
+                        <h2 class="topic">Likes</h2>
+                    </div>
+
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185030/14.png" alt="likes">
+                </div>
+
+                <div class="box box3">
+                    <div class="text">
+                        <h2 class="topic-heading">320</h2>
+                        <h2 class="topic">Comments</h2>
+                    </div>
+
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(32).png"
+                        alt="comments">
+                </div>
+
+                <div class="box box4">
+                    <div class="text">
+                        <h2 class="topic-heading">70</h2>
+                        <h2 class="topic">Published</h2>
+                    </div>
+
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185029/13.png" alt="published">
+                </div>
+            </div> --}}
+
+            <div class="report-container">
+                <div class="report-header">
+                    <h1 class="recent-Articles">Sales Report</h1>
+                    <form style="margin: 10px;" action="/admin/dash/customdate-report" method="post">
+                        <div class="dropdown">
+                            <button class="dropbtn">Custom Date</button>
+                            <div class="dropdown-content">
+                                <input style="border: none;border-radius: 10px;color: #5500cb;" type="date"
+                                    id="expirationDate" type="date" name="startdate">
+                                <input style="border: none;border-radius: 10px;color: #5500cb;" type="date"
+                                    id="expirationDate" type="date" name="enddate">
+                                <button type="submit" class="view">Filter</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle view"
+                            style="width: auto;background-color: white;color: blueviolet;border-color: blueviolet;"
+                            type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                            Sales
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <li><button class="dropdown-item" type="button"><a
+                                        href="/admin/dash/daily">Daily</a></button></li>
+                            <li><button class="dropdown-item" type="button"><a
+                                        href="/admin/dash/weekly">Weekly</a></button></li>
+                            <li><button class="dropdown-item" type="button"><a
+                                        href="/admin/dash/monthly">Monthly</a></button>
+                            <li><button class="dropdown-item" type="button"><a
+                                        href="/admin/dash/yearly">Yearly</a></button>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="container table-responsive py-5">
+                    <h3 style="text-align: center;color: rgb(126, 129, 129);">{{header}}</h3>
+                    {{#if data}}
+                    <h5 style="color: rgb(24, 112, 189);">Order List</h5>
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Order Number</th>
+                                <th scope="col">User</th>
+                                <th scope="col">Date</th>
+
+                                <th scope="col">Total</th>
+                                <th scope="col">Discount</th>
+                                <th scope="col">Payment</th>
+                                <th scope="col">Status</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody id="productBody">
+
+                            {{#each data}}
+                            <tr>
+                                <th scope="row">{{@index}}</th>
+                                <td>{{this._id}}</td>
+                                <td>{{this.userId}}</td>
+                                <td>{{this.orderedAt}}</td>
+                                <td>{{this.totalPrice}}</td>
+
+                                <td>{{this.discount}}</td>
+                                <td>{{this.payment}}</td>
+                                <td>{{this.status}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    {{/if}}
+                    {{#if overalldata}}
+                    <h5 style="color: rgb(24, 112, 189);">Overall Sales Report</h5>
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Month/week/Year</th>
+                                <th scope="col">Sales count</th>
+                                <th scope="col">Discount</th>
+                                <th scope="col">Coupon discount</th>
+                                <th scope="col">Ordered Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productBody">
+                            {{#each overalldata}}
+                            <tr>
+
+                                <td>{{this.month}}{{this.week}}{{this.year}}{{this._id}}</td>
+                                <td>{{this.totalSalesCount}}</td>
+                                <td>{{this.totalDiscount}}</td>
+                                <td>{{this.totalCouponDeduction}}</td>
+                                <td>{{this.totalOrderedAmount}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    {{/if}}
+
+                    {{#if overallDiscount}}
+                    <h5 style="color: rgb(24, 112, 189);">Overall Sales report</h5>
+
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Sales count</th>
+                                <th scope="col">Discount</th>
+                                <th scope="col">Coupon discount</th>
+                                <th scope="col">Ordered Amount</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody id="productBody">
+
+                            <tr>
+                                <th scope="row">{{@index}}</th>
+
+                                <td>{{overallSalesCount}}</td>
+                                <td>{{overallDiscount}}</td>
+                                <td>{{couponDeductionAmount}}</td>
+
+                                <td>{{overallOrderedAmount}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    {{/if}}
+                    <br>
+                    {{#each monthlydata}}
+
+                    <h5 style="color: rgb(24, 112, 189);text-decoration-line: ;">Order List {{this.month}}</h5>
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Order Number</th>
+                                <th scope="col">User</th>
+                                <th scope="col">Date</th>
+
+                                <th scope="col">Total</th>
+                                <th scope="col">Discount</th>
+                                <th scope="col">Payment</th>
+                                <th scope="col">Status</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody id="productBody">
+                            {{#each this.orders}}
+                            <tr>
+                                {{this.orders}}
+                                <th scope="row">{{@index}}</th>
+                                <td>{{this._id}}</td>
+                                <td>{{this.userId}}</td>
+                                <td>{{this.orderedAt}}</td>
+                                <td>{{this.totalPrice}}</td>
+
+                                <td>{{this.discount}}</td>
+                                <td>{{this.payment}}</td>
+                                <td>{{this.status}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    {{/each}}
+                    {{#each customdata}}
+
+                    <h5 style="color: rgb(24, 112, 189);text-decoration-line: ;">Order List </h5>
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Order Number</th>
+                                <th scope="col">User</th>
+                                <th scope="col">Date</th>
+
+                                <th scope="col">Total</th>
+                                <th scope="col">Discount</th>
+                                <th scope="col">Payment</th>
+                                <th scope="col">Status</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody id="productBody">
+                            {{#each this.orders}}
+                            <tr>
+                                {{this.orders}}
+                                <th scope="row">{{@index}}</th>
+                                <td>{{this._id}}</td>
+                                <td>{{this.userId}}</td>
+                                <td>{{this.orderedAt}}</td>
+                                <td>{{this.totalPrice}}</td>
+
+                                <td>{{this.discount}}</td>
+                                <td>{{this.payment}}</td>
+                                <td>{{this.status}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    {{/each}}
+                    {{#each weeklydata}}
+
+                    <h5 style="color: rgb(24, 112, 189);">Order List {{this.week}} th Week</h5>
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Order Number</th>
+                                <th scope="col">User</th>
+                                <th scope="col">Date</th>
+
+                                <th scope="col">Total</th>
+                                <th scope="col">Discount</th>
+                                <th scope="col">Payment</th>
+                                <th scope="col">Status</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody id="productBody">
+                            {{#each this.orders}}
+                            <tr>
+                                {{this.orders}}
+                                <th scope="row">{{@index}}</th>
+                                <td>{{this._id}}</td>
+                                <td>{{this.userId}}</td>
+                                <td>{{this.orderedAt}}</td>
+                                <td>{{this.totalPrice}}</td>
+
+                                <td>{{this.discount}}</td>
+                                <td>{{this.payment}}</td>
+                                <td>{{this.status}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    {{/each}}
+                    {{#each yearlydata}}
+
+                    <h5 style="color: rgb(24, 112, 189);">Order List <span style="color: black;">{{this.year}}</span>
+                    </h5><br>
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Order Number</th>
+                                <th scope="col">User</th>
+                                <th scope="col">Date</th>
+
+                                <th scope="col">Total</th>
+                                <th scope="col">Discount</th>
+                                <th scope="col">Payment</th>
+                                <th scope="col">Status</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody id="productBody">
+                            {{#each this.orders}}
+                            <tr>
+                                {{this.orders}}
+                                <th scope="row">{{@index}}</th>
+                                <td>{{this._id}}</td>
+                                <td>{{this.userId}}</td>
+                                <td>{{this.orderedAt}}</td>
+                                <td>{{this.totalPrice}}</td>
+
+                                <td>{{this.discount}}</td>
+                                <td>{{this.payment}}</td>
+                                <td>{{this.status}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    {{/each}}
+                    <a style="margin-left: auto;" href="/admin/dash/csv-report/{{header}}"><button style="width: auto;"
+                            class="view">Download csv</button></a>
+                    <a href="/admin/dash/pdf-report/{{header}}"><button style="width: auto;" class="view">Download
+                            pdf</button></a>
+
+                </div>
+                <div id="pagination" class="pagination">
+                    <button style="margin-left: 45%;" id="prevButton">Prev</button>
+                    <button id="nextButton">Next</button>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+
+    <script>
+        const productsPerPage = 5;
+        const tbody = document.getElementById('productBody');
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        let currentPage = 1;
+
+        function displayPage(page) {
+            const startIndex = (page - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+
+            rows.forEach((row, index) => {
+                if (index >= startIndex && index < endIndex) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        function displayPagination() {
+            document.getElementById('prevButton').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayPage(currentPage);
+                }
+            });
+
+            document.getElementById('nextButton').addEventListener('click', () => {
+                const totalPages = Math.ceil(rows.length / productsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayPage(currentPage);
+                }
+            });
+        }
+
+        displayPage(currentPage);
+        displayPagination();
+
+
+        //pdf download
+
+    </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+    const dataRows = document.querySelectorAll('#productBody tr');
+    dataRows.forEach((row, index) => {
+      const rowNumberCell = row.querySelector('th[scope="row"]');
+            if (rowNumberCell) {
+                rowNumberCell.textContent = index + 1;
+      }
+    });
+  });
+    </script>
+    </script>
+</body>
+
+</html>

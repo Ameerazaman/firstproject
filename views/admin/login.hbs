@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <form action="/admin/login" method="post" id="adminlogin-form">
+
+
+        <div style="width: auto;" class="container">
+            <div class="left-section"></div>
+            <div class="right-section">
+                <div class="login-container">
+
+                    <form class="login-form">
+                        <h2 class="login-title"><i class="fas fa-user-circle"></i>Admin Login</h2>
+
+                        <div class="form-control">
+                            <i class="fas fa-user icon"></i>
+
+                            <input type="text" placeholder="Username" id="username" name="username">
+                        </div>
+                        <span style="color: red;">{{this.message}}</span>
+                        <span style="color: red;" id="username-error"></span>
+
+                        <div class="form-control">
+                            <i class="fas fa-lock icon"></i>
+                            <input type="password" placeholder="Password" id="password" name="password">
+                        </div>
+                        <span style="color: red;">{{this.messages}}</span>
+                        <span style="color: red;" id="password-error"></span>
+                       
+
+                        <button type="submit">Login</button>
+                        <br>
+                        <div style="text-align: center;">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
+<script src="/javascript.js"></script>
+<script>
+    document.getElementById("adminlogin-form").addEventListener('submit', (e) => {
+        var username = document.getElementById("username").value;
+        document.getElementById("username-error").innerHTML;
+
+        if (username === '') {
+            document.getElementById("username-error").innerHTML = 'This field is required'
+            e.preventDefault()
+        }
+
+        else if (!/^[a-zA-Z0-9]+$/.test(username)) {
+            document.getElementById('username-error').innerText = 'Username must contain only letters and numbers';
+            e.preventDefault()
+        }
+        var password = document.getElementById("password").value
+        document.getElementById("password-error").innerHTML;
+        if (password === '') {
+            document.getElementById("password-error").innerHTML = "This field is required"
+            e.preventDefault()
+        }
+        else if (/\s/.test(password)) {
+            document.getElementById('password-error').innerText = 'Password cannot contain spaces';
+            e.preventDefault()
+        }
+    })
+
+
+
+</script>
+
+{{!-- < --}}

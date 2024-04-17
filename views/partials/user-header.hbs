@@ -1,0 +1,734 @@
+{{!--
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ecommerce Navbar Design</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .top-navbar {
+            background-color: #2874f0;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-navbar .brand-name {
+            color: #fff;
+        }
+
+        .top-navbar .nav-link {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .dropbtn {
+            background-color: #2874f0;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #2874f0;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #2874f0;
+        }
+
+        @media (max-width: 992px) {
+            .brand-name {
+                font-size: 20px;
+            }
+
+            .top-navbar {
+                background-color: #2874f0;
+                padding: 10px;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-navbar">
+        <div class="container">
+            <div class="row">
+                <div style="padding-top: 15px;" class="col-md-2 col-3">
+                    <h5 class="brand-name">App Store</h5>
+                </div>
+                <div style="padding-top: 11px;" class="col-md-4 col-4">
+                    <form action="/user/search" method="post" role="search">
+                        <div class="input-group">
+                            <input type="search" placeholder="Search your product" class="form-control" name="search" />
+                            <button type="submit">Search</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-5 col-4">
+                    <ul class="nav justify-content-end">
+                        {{#if check}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user">
+                                Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/signup">
+                                SignUp
+                            </a>
+                        </li>
+                        {{else}}
+                        <li class="nav-item">
+                            <a style="padding-top: 15px;" class="nav-link" href="/user/home">
+                                <i class="fa fa-home"></i>
+                            </a>
+                        </li>
+                        <div class="dropdown">
+                            <button class="dropbtn"><i class="fa fa-user"></i> Account</button>
+                            <div class="dropdown-content">
+                                <a class="nav-link" href="/user-profile">
+
+                                    <i class="fa fa-user"></i> Profile
+                                </a>
+                                <a class="nav-link" href="/cart/cartpage">
+                                    <i class="fa fa-shopping-cart"></i> Cart (0)
+                                </a>
+                                <a class="nav-link" href="/wishlist">
+                                    <i class="fa fa-heart"></i> Wishlist (0)
+                                </a>
+                                <a class="nav-link" href="/user-profile/order">
+                                    Order
+                                </a>
+                                <a class="nav-link" href="/user/logout">
+                                    Logout
+                                </a>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html> --}}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/dashboard.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #e0e0e0;
+        }
+
+        .dropbtn {
+            background-color: #ffffff;
+            color: rgb(34, 33, 33);
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fbfcfd;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #e7e5e5
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #e0e0e0;
+        }
+
+        .badge:after {
+            content: attr(value);
+            font-size: 12px;
+            color: #fff;
+            background: red;
+            border-radius: 50%;
+            padding: 0 5px;
+            position: relative;
+            left: -8px;
+            top: -10px;
+            opacity: 0.9;
+        }
+
+        a {
+            text-decoration: none;
+            color: rgb(77, 76, 76);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+
+        p {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+
+        .badge:after {
+            content: attr(value);
+            font-size: 12px;
+            color: #fff;
+            background: red;
+            border-radius: 50%;
+            padding: 0 5px;
+            position: relative;
+            left: -8px;
+            top: -10px;
+            opacity: 0.9;
+        }
+
+        #ex4 .p1[data-count]:after {
+            position: absolute;
+            right: 10%;
+            top: 8%;
+            content: attr(data-count);
+            font-size: 40%;
+            padding: .2em;
+            border-radius: 50%;
+            line-height: 1em;
+            color: white;
+            background: rgba(255, 0, 0, .85);
+            text-align: center;
+            min-width: 1em;
+            //font-weight:bold;
+        }
+    </style>
+    <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+
+        <div class="logosec">
+
+            <div>
+                <h5 style="color: #333;"> App Store</h5>
+            </div>
+            {{!-- <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182541/Untitled-design-(30).png"
+                class="icn menuicn" id="menuicn" alt="menu-icon" onclick="menuicon()"> --}}
+        </div>
+
+
+        {{#if check}}
+        <div class="message">
+
+            <a style="color: #333;text-decoration: none;font-weight:bold;" href="/user">
+                <i class="fa fa-sign-in" aria-hidden="true"></i> Login
+            </a>
+            <a style="color: #333;text-decoration: none;font-weight: bold;" href="/user/signup">
+                <i class="fa fa-user-plus" aria-hidden="true"></i> Signup
+            </a>
+
+        </div>
+        {{else}}
+        <div class="message">
+
+            <a class="nav-link" href="/user/home">
+                <i class="fa fa-home"></i>
+
+            </a>
+         <a class="nav-link" href="/cart/cartpage">
+
+                 <span class="position-relative">
+                    <i id="header_cart" class=" fa fa-shopping-cart"></i>
+                </span> 
+
+                {{!-- <i class="fa badge fa-lg" id="header_cart" style="color: rgb(20, 19, 19);">&#xf07a;</i> --}}
+                
+
+            </a>
+            <a class="nav-link" href="/wishlist">
+                <i id="header_wishlist" class="fa fa-heart"></i>
+            </a>
+            <div style="margin-right: 40px;" class="dropdown">
+                <button class="dropbtn"><i class="fa fa-user"></i></button>
+                <div class="dropdown-content">
+                    <a class="nav-link" href="/user-profile">
+
+                        <i class="fa fa-user"></i> Profile
+                    </a>
+                    <a class="nav-link" href="/cart/cartpage">
+                        <i class="fa fa-shopping-cart"></i> Cart
+                    </a>
+                    <a class="nav-link" href="/wishlist">
+                        <i class="fa fa-heart"></i> Wishlist
+                    </a>
+                    <a class="nav-link" href="/user-profile/order">
+                        <i class="fas fa-list-ul"></i> Order
+                    </a>
+
+                    <a class="nav-link" href="/user/logout">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+        {{/if}}
+    </header>
+
+
+    <script src="/javascript.js"></script>
+</body>
+
+</html>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        // Fetch cart products count from the server
+        fetch('/user/cart/count')
+            .then(response => response.json())
+            .then(data => {
+                // Update the cart icon with the count
+                console.log("data",data)
+                {{!-- const headerCartIcon = document.getElementById('header_cart');
+                headerCartIcon.setAttribute('data-count', data); --}}
+                document.getElementById("header_cart").innerHTML=data
+            })
+            .catch(error => console.error('Error fetching cart products count:', error));
+    });
+</script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        // Fetch cart products count from the server
+        fetch('/user/wishlist/count')
+            .then(response => response.json())
+            .then(data => {
+                // Update the cart icon with the count
+                console.log("data",data)
+                {{!-- const headerCartIcon = document.getElementById('header_wishlist');
+                headerCartIcon.setAttribute('data-count', data); --}}
+                document.getElementById("header_wishlist").innerHTML=data
+            })
+            .catch(error => console.error('Error fetching cart products count:', error));
+    });
+</script>
+
+{{!--
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .top-txt {
+            background-color: var(--black);
+        }
+
+        .head {
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.945);
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .head a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.945);
+            margin: 0 10px;
+        }
+
+
+        /* //........ Navbar ........// */
+
+        .navbar input[type="checkbox"],
+        .navbar .hamburger-lines {
+            display: none;
+        }
+
+        .navbar {
+            box-shadow: 0 5px 4px rgb(146 161 176 / 15%);
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            color: var(--black);
+            z-index: 100;
+        }
+
+        .navbar-container1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .navbar img {
+            margin-left: 3rem;
+        }
+
+        .menu-items {
+            order: 2;
+            display: flex;
+            margin-right: 3rem;
+        }
+
+        .menu-items li {
+            list-style: none;
+            margin-left: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .navbar-container1 ul a {
+            text-decoration: none;
+            color: var(--black);
+            font-size: 18px;
+            position: relative;
+        }
+
+        .navbar-container1 ul a:after {
+            content: "";
+            position: absolute;
+            background: var(--primary-color);
+            height: 3px;
+            width: 0;
+            left: 0;
+            bottom: -10px;
+            transition: 0.3s;
+        }
+
+        .navbar-container1 ul a:hover:after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                opacity: 0.95;
+            }
+
+            .navbar-container1 input[type="checkbox"],
+            .navbar-container1 .hamburger-lines {
+                display: block;
+            }
+
+            .navbar-container1 {
+                display: block;
+                position: relative;
+                height: 64px;
+            }
+
+            .navbar-container1 input[type="checkbox"] {
+                position: absolute;
+                display: block;
+                height: 32px;
+                width: 30px;
+                top: 20px;
+                left: 20px;
+                z-index: 5;
+                opacity: 0;
+                cursor: pointer;
+            }
+
+            .navbar-container1 .hamburger-lines {
+                display: block;
+                height: 28px;
+                width: 35px;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                z-index: 2;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .navbar-container1 .hamburger-lines .line {
+                display: block;
+                height: 4px;
+                width: 100%;
+                border-radius: 10px;
+                background: #333;
+            }
+
+            .navbar-container1 .hamburger-lines .line1 {
+                transform-origin: 0% 0%;
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .navbar-container1 .hamburger-lines .line2 {
+                transition: transform 0.2s ease-in-out;
+            }
+
+            .navbar-container1 .hamburger-lines .line3 {
+                transform-origin: 0% 100%;
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .navbar .menu-items {
+                padding-top: 100px;
+                background: #fff;
+                height: 100vh;
+                max-width: 100%;
+                transform: translate(-150%);
+                display: flex;
+                flex-direction: column;
+                /* margin-left: -40px;
+        padding-left: 40px; */
+                text-align: center;
+                transition: transform 0.5s ease-in-out;
+                /* box-shadow: 5px 0px 10px 0px #aaa; */
+                overflow: scroll;
+            }
+
+            .navbar .menu-items li {
+                margin-bottom: 2rem;
+                font-size: 1.1rem;
+                font-weight: 500;
+            }
+
+            .menu-items li,
+            .navbar img {
+                margin: 0;
+            }
+
+            .navbar .menu-items li:nth-child(1) {
+                margin-top: 1.5rem;
+            }
+
+            .navbar-container1 .logo img {
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                margin-top: 8px;
+            }
+
+            .navbar-container1 input[type="checkbox"]:checked~.menu-items {
+                transform: translateX(0);
+            }
+
+            .navbar-container1 input[type="checkbox"]:checked~.hamburger-lines .line1 {
+                transform: rotate(45deg);
+            }
+
+            .navbar-container1 input[type="checkbox"]:checked~.hamburger-lines .line2 {
+                transform: scaleY(0);
+            }
+
+            .navbar-container1 input[type="checkbox"]:checked~.hamburger-lines .line3 {
+                transform: rotate(-45deg);
+            }
+
+            .navbar-container1 input[type="checkbox"]:checked~.home_page img {
+                display: none;
+                background: #fff;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .navbar-container input[type="checkbox"]:checked~.navbar-container img {
+                display: none;
+            }
+        }
+
+
+        .dropbtn {
+            background-color: #f9f9fb;
+            color: rgb(34, 33, 33);
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fbfcfd;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #e7e5e5
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #e0e0e0;
+        }
+
+        a {
+            text-decoration: none;
+            color: rgb(77, 76, 76);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+        }
+    </style>
+</head>
+
+<body>
+    {{#if check}}
+    <section class=" top-txt ">
+        <div class="head container1 ">
+            <div class="head-txt ">
+                <p>Free shipping, 30-day return or refund guarantee.</p>
+            </div>
+            <div>
+                <a href="/user"> SIGN IN</a>
+                <a href="/user/signup">SIGN UP</a>
+            </div>
+        </div>
+    </section>
+    <nav class="navbar">
+        <div class="navbar-container1">
+            <input type="checkbox" name="" id="checkbox">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul style="padding-right: 20%;" class="menu-items">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sellers">Shop</a></li>
+                <li><a href="#news">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="logo">
+                <img src="https://i.postimg.cc/TP6JjSTt/logo.webp" alt="">
+            </div>
+        </div>
+    </nav>
+    {{else}}
+    <nav class="navbar">
+        <div class="navbar-container1">
+            <input type="checkbox" name="" id="checkbox">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <a href="/user/home">
+                    <i class="fa fa-home">Home</i>
+
+                </a>
+                <a class="nav-link" href="/cart/cartpage">
+                    <i class="fa fa-shopping-cart"></i> Cart (0)
+                </a>
+                <a class="nav-link" href="/wishlist">
+                    <i class="fa fa-heart"></i> Wishlist (0)
+                </a>
+                <div class="dropdown">
+                    <button class="dropbtn"><i class="fa fa-user">Account</i></button>
+                    <div class="dropdown-content">
+                        <a class="nav-link" href="/user-profile">
+
+                            <i class="fa fa-user"></i> Profile
+                        </a>
+                        <a class="nav-link" href="/cart/cartpage">
+                            <i class="fa fa-shopping-cart"></i> Cart (0)
+                        </a>
+                        <a class="nav-link" href="/wishlist">
+                            <i class="fa fa-heart"></i> Wishlist (0)
+                        </a>
+                        <a class="nav-link" href="/user-profile/order">
+                            <i class="fas fa-list-ul"></i> Order
+                        </a>
+
+                        <a class="nav-link" href="/user/logout">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </ul>
+
+            <h5 style="margin-left: 20px;">App Store</h5>
+            <h5 style="color: red;font-weight: 700;">.</h5>
+        </div>
+    </nav>
+    {{/if}}
+</body>
+
+</html> --}}

@@ -1,0 +1,428 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,  
+                   initial-scale=1.0">
+  <title>GeeksForGeeks</title>
+
+  <link rel="stylesheet" href="/dashboard.css">
+  {{!-- pagination --}}
+
+  <style>
+    h5 {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color: black;
+    }
+
+    #checkout-form {
+      display: flex;
+      flex-direction: column;
+      max-width: 675px;
+    }
+
+    #check-form {
+      display: flex;
+      flex-direction: column;
+      max-width: 475px;
+    }
+
+    form>section:first-child {
+      margin-bottom: 50px;
+    }
+
+    form>section>h3 {
+      font-size: var(--text-m);
+      font-weight: 600;
+      color: #333;
+    }
+
+    form .form-group:not(:last-child) {
+      margin-bottom: 12px;
+    }
+
+    form .form-groups {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 25px;
+    }
+
+    form .form-group>label {
+      font-size: var(--text-xs);
+      color: #4F4F4F;
+      font-weight: 600;
+    }
+
+    form .form-group>div {
+      position: relative;
+      margin-top: 7px;
+    }
+
+    form .form-group .material-icons {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 15px;
+      font-size: var(--text-m);
+      color: #828282;
+    }
+
+    form .form-group input,
+    form .form-group select {
+      width: 100%;
+      padding: 12px 10px 12px 42px;
+      border-radius: 12px;
+      border: 1px solid #828282;
+      outline: none;
+      font-weight: 600;
+      font-size: var(--text-s);
+    }
+
+    option:disbled {
+      color: #828282;
+    }
+
+    form .form-group,
+    form .form-groups {
+      max-width: 475px;
+    }
+
+    form .form-group.checkbox {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .pagination {
+      margin-top: 10px;
+    }
+
+    .pagination button {
+      margin-right: 5px;
+    }
+
+    .pagination button.active {
+      font-weight: bold;
+    }
+
+    button {
+      padding: 8px;
+      border-radius: 10px;
+      color: aliceblue;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+
+  <div class="main-container">
+
+   <div class="navcontainer">
+      <nav class="nav">
+
+        <div>
+         
+
+          <div class="option2 nav-option">
+            
+            <i class="fa fa-user"></i>
+            <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/user-profile">
+              <h5>Profile</h5>
+            </a>
+          </div>
+
+          <div class="option2 nav-option">
+           
+            <i class="fa fa-address-book"></i>
+            <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/user-profile/address-mgt">
+              <h5>Address</h5>
+            </a>
+          </div>
+
+
+
+
+        
+
+         
+          
+          <div class="nav-option logout">
+            
+            <i class="fa fa-tag"></i>
+            <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/user-profile/offer">
+              <h5>Offer</h5>
+            </a>
+          </div>
+          <div class="nav-option logout">
+           
+            <i class="fa fa-heart"></i>
+            <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/wishlist">
+              <h5>Wishlist</h5>
+            </a>
+          </div>
+          <div class="nav-option logout">
+           
+            <i class="fa fa-clipboard"></i>
+            <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/user-profile/order">
+              <h5>Order</h5>
+            </a>
+          </div>
+          <div class="nav-option option5">
+           
+           <i class="fa fa-credit-card"></i>
+            <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/user-profile/wallet">
+              <h5>Wallet</h5>
+            </a>
+          </div>
+
+        </div>
+      </nav>
+    </div>
+    <div class="main">
+
+      <div class="searchbar2">
+        <input type="text" name="" id="" placeholder="Search">
+        <div class="searchbtn">
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png"
+            class="icn srchicn" alt="search-button">
+        </div>
+      </div>
+
+      {{!-- <div class="box-container">
+
+        <div class="box box1">
+          <div class="text">
+            <h2 class="topic-heading">60.5k</h2>
+            <h2 class="topic">Article Views</h2>
+          </div>
+
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(31).png"
+            alt="Views">
+        </div>
+
+        <div class="box box2">
+          <div class="text">
+            <h2 class="topic-heading">150</h2>
+            <h2 class="topic">Likes</h2>
+          </div>
+
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185030/14.png" alt="likes">
+        </div>
+
+        <div class="box box3">
+          <div class="text">
+            <h2 class="topic-heading">320</h2>
+            <h2 class="topic">Comments</h2>
+          </div>
+
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(32).png"
+            alt="comments">
+        </div>
+
+        <div class="box box4">
+          <div class="text">
+            <h2 class="topic-heading">70</h2>
+            <h2 class="topic">Published</h2>
+          </div>
+
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185029/13.png" alt="published">
+        </div>
+      </div> --}}
+
+      <div class="report-container">
+        <div class="report-header">
+          <h5 class="recent-Articles">Edit Address Mgt</h5>
+        </div>
+        <section style="padding-top: 50px; height: auto;" id="s2">
+
+
+          <form action="/user-profile/edit-addressmgt/{{data._id}}" style="padding: 20px;padding-left: 90px;"
+            method="post" id="checkout-form">
+            <section id="Address">
+
+              <div class="form-group">
+                <label style="padding: 0%;" for="address-type">Address Type</label>
+                <div style="margin: 20px;padding: 30px;display: flex; width: auto;">
+                  <input style="width: 20px;height: 20px;" type="radio" id="home" name="home" value="home">
+                    <label for="cash-on-delivery">Home</label>
+                   
+                  <input style="margin-left: 20px;width: 20px;height: 20px;" type="radio" id="work" name="work"
+                    value="work">
+                  <label for="razer-pay">Work</label>
+                   
+                </div>
+
+                <div class="form-group">
+                  <label for="fullname">Full name</label>
+                  <div>
+                    <input value="{{data.fullname}}" type="text" id="fullname" name="fullname"
+                      placeholder="Your full name..." />
+                    <span class="text-danger" id="fullname-error"></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <div>
+                    <input value="{{data.email}}" type="email" id="email" name="email" placeholder="Your Email..." />
+                    <span class="text-danger" id="email-error"></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="Phone">Phone Number</label>
+                  <div>
+                    <input value="{{data.phone}}" type="Number" id="phone" name="phone"
+                      placeholder="Your Phone Number..." />
+                    <span class="text-danger" id="phone-error"></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <div>
+
+                    <input value="{{data.address}}" type="text" id="address" placeholder="Your address..."
+                      name="address" />
+                    <span class="text-danger" id="address-error"></span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <div>
+
+                    <input value="{{data.city}}" type="text" id="city" name="city" placeholder="Your city..." />
+                    <span class="text-danger" id="city-error"></span>
+                  </div>
+                </div>
+                <div class="form-groups">
+                  <div class="form-group">
+                    <label for="country">Country</label>
+                    <div>
+
+                      <select name="state" id="state">
+                        <option disabled selected>Your state...</option>
+                        <option>Kerala</option>
+                        <option>karnadaka</option>
+                        <option>Thamilnadu</option>
+                        <option>Andra</option>
+                        <option>Delhi</option>
+                        <option>Punjab</option>
+                      </select>
+                      <span class="text-danger" id="state-error"></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="postal-code">Postal code</label>
+                    <div>
+
+                      <input value="{{data.postalcode}}" type="text" id="postal-code" name="postalcode"
+                        placeholder="Your postal code..." />
+                      <span class="text-danger" id="postalcode-error"></span>
+                    </div>
+
+                  </div>
+                </div>
+                <button class="view" type="submit">Save</button>
+            </section>
+          </form>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+
+  <script>
+document.getElementById("checkout-form").addEventListener('submit', (e) => {
+            var fullname = document.getElementById("fullname").value;
+            var fullnameError = document.getElementById("fullname-error");
+            if (fullname.trim() === '') {
+                document.getElementById("fullname-error").innerHTML = 'This field is required';
+                e.preventDefault();
+            }
+            else if (/^\s|\s$/.test(fullname)) { // Check for spaces at the beginning or end
+                document.getElementById("fullname-error").innerHTML = 'Spaces at beginning or end are not allowed';
+                e.preventDefault();
+            }
+
+            var address = document.getElementById("address").value;
+            document.getElementById("address-error").innerHTML;
+            if (address.trim() === '') {
+                document.getElementById("address-error").innerHTML = 'This field is required'
+                e.preventDefault()
+            }
+            else if (/^\s|\s$/.test(address)) {
+                document.getElementById("address-error").innerHTML = 'space are not allowed'
+                e.preventDefault()
+            }
+
+
+            var city = document.getElementById("city").value;
+            document.getElementById("city-error").innerHTML;
+            if (city.trim() === '') {
+                document.getElementById("city-error").innerHTML = 'This field is required'
+                e.preventDefault()
+            }
+           else if (/^\s|\s$/.test(city)) {
+                document.getElementById("city-error").innerHTML = 'space are not allowed'
+                e.preventDefault()
+            }
+
+
+            var state = document.getElementById("state").value;
+            document.getElementById("state-error").innerHTML;
+            if (state.trim() === '') {
+                document.getElementById("state-error").innerHTML = 'This field is required'
+                e.preventDefault()
+            }
+            else if (/^\s|\s$/.test(state)) {
+                document.getElementById("state-error").innerHTML = 'space are not allowed'
+                e.preventDefault()
+            }
+
+
+            var email = document.getElementById("email").value;
+            document.getElementById("email-error").innerHTML;
+            if (email.trim() === '') {
+                document.getElementById("email-error").innerHTML = 'This field is required'
+                e.preventDefault()
+            }
+            else if (/^\s|\s$/.test(email)) {
+                document.getElementById("email-error").innerHTML = 'space are not allowed'
+                e.preventDefault()
+            }
+            var phone = document.getElementById("phone").value;
+            document.getElementById("phone-error").innerHTML;
+            if (phone.trim() === '') {
+                document.getElementById("phone-error").innerHTML = 'This field is required'
+                e.preventDefault()
+            }
+            else if (phone.length !== 10) {
+                document.getElementById("phone-error").innerHTML = 'Required 10 digits'
+                e.preventDefault()
+            }
+            else if (/^\s|\s$/.test(phone)) {
+                document.getElementById("phone-error").innerHTML = 'space are not allowed'
+                e.preventDefault()
+            }
+
+
+            var postalcode = document.getElementById("postal-code").value;
+            document.getElementById("postalcode-error").innerHTML;
+            if (postalcode.trim() === '') {
+                document.getElementById("postalcode-error").innerHTML = 'This field is required'
+                e.preventDefault()
+            }
+            else if (/\s/.test(postalcode)) {
+                document.getElementById("postalcode-error").innerHTML = 'space are not allowed'
+                e.preventDefault()
+            }
+        })
+  </script>
+</body>
+
+</html>

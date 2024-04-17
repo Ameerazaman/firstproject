@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  
+                   initial-scale=1.0">
+    <title>GeeksForGeeks</title>
+
+    <link rel="stylesheet" href="/dashboard.css">
+    {{!-- pagination --}}
+
+    <style>
+        .pagination {
+            margin-top: 10px;
+        }
+
+        .pagination button {
+            margin-right: 5px;
+        }
+
+        .pagination button.active {
+            font-weight: bold;
+        }
+
+        button {
+            padding: 8px;
+            border-radius: 10px;
+            background-color: rgb(58, 86, 249);
+            color: aliceblue;
+
+        }
+
+        button:hover {
+            background-color: blue;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+
+    <div class="main-container">
+
+        <div class="navcontainer">
+            <nav class="nav">
+        <div>
+          <div style="background-color: rgb(47, 47, 189);" class="option1 nav-option">
+            <img src="/images/download.png" class="nav-img" alt="dashboard">
+            <h5 style="color:white;background-color:  ;"> Main Menu</h5>
+          </div>
+
+          <div class="option2 nav-option">
+            <img src="/images/dashboard.png" class="nav-img" alt="dashboard">
+            <a href="/admin/dashboard">
+              <h5> Dashboard</h5>
+            </a>
+          </div>
+
+          <div class="option2 nav-option">
+            <img src="/images/products.png" class="nav-img" alt="articles">
+            <a href="/admin/product">
+              <h5>Products</h5>
+            </a>
+          </div>
+
+          <div class="nav-option option3">
+            <img src="/images/catogary.png" class="nav-img" alt="report">
+            <a href="/admin/category">
+              <h5>Category</h5>
+            </a>
+          </div>
+
+          <div class="nav-option option4">
+            <img src="/images/order.png" class="nav-img" alt="institution">
+            <a href="/order">
+              <h5>Orders</h5>
+            </a>
+          </div>
+
+          <div class="nav-option option5">
+            <img src="/images/new coupon.png" class="nav-img" alt="blog">
+            <a href="/coupon">
+              <h5>Coupon</h5>
+            </a>
+          </div>
+
+          <div class="nav-option option6">
+            <img src="/images/coupon.png" class="nav-img" alt="settings">
+              <a href="/referaloffer"><h5> Offer</h5>
+            </a>
+          </div>
+          <div class="nav-option option6">
+            <img src="/images/customers.png" class="nav-img" alt="settings">
+            <a href="/admin/customers">
+              <h5>Customers</h5>
+            </a>
+          </div>
+          
+          <div class="nav-option logout">
+            <img src="/images/logout.png" class="nav-img" alt="logout">
+            <a href="/admin/logout">
+              <h5>Logout</h5>
+            </a>
+          </div>
+
+        </div>
+      </nav>
+        </div>
+        <div class="main">
+
+            <div class="searchbar2">
+                <input type="text" name="" id="" placeholder="Search">
+                <div class="searchbtn">
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png"
+                        class="icn srchicn" alt="search-button">
+                </div>
+            </div>
+
+            {{!-- <div class="box-container">
+
+                <div class="box box1">
+                    <div class="text">
+                        <h2 class="topic-heading">60.5k</h2>
+                        <h2 class="topic">Article Views</h2>
+                    </div>
+
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(31).png"
+                        alt="Views">
+                </div>
+
+                <div class="box box2">
+                    <div class="text">
+                        <h2 class="topic-heading">150</h2>
+                        <h2 class="topic">Likes</h2>
+                    </div>
+
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185030/14.png" alt="likes">
+                </div>
+
+                <div class="box box3">
+                    <div class="text">
+                        <h2 class="topic-heading">320</h2>
+                        <h2 class="topic">Comments</h2>
+                    </div>
+
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(32).png"
+                        alt="comments">
+                </div>
+
+                <div class="box box4">
+                    <div class="text">
+                        <h2 class="topic-heading">70</h2>
+                        <h2 class="topic">Published</h2>
+                    </div>
+
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185029/13.png" alt="published">
+                </div>
+            </div> --}}
+
+            <div class="report-container">
+                <div class="report-header">
+                    <h1 class="recent-Articles">Offer</h1>
+                </div>
+                <h5 style="padding-top: 20px;padding-left: 20px;">Referal Offer</h5>
+                {{#if data}}
+                <form style="padding-left: 20px;" action="/referaloffer/edit-offer/{{data._id}}" method="post">
+                    <label for="">Edit referal Offer</label>
+                    <input type="number" placeholder="Offer" name="offer" value="{{data.referalDiscount}}">
+                    <button type="submit">Edit</button>
+                </form>
+                {{else}}
+                <form action="/referaloffer/create" method="post">
+                    <label for="">Create referal Offer</label>
+                    <input type="number" placeholder="Offer" name="offer">
+                    <button type="submit">Create</button>
+                </form>
+                {{/if}}
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const productsPerPage = 5;
+        const tbody = document.getElementById('productBody');
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        let currentPage = 1;
+
+        function displayPage(page) {
+            const startIndex = (page - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+
+            rows.forEach((row, index) => {
+                if (index >= startIndex && index < endIndex) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        function displayPagination() {
+            document.getElementById('prevButton').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayPage(currentPage);
+                }
+            });
+
+            document.getElementById('nextButton').addEventListener('click', () => {
+                const totalPages = Math.ceil(rows.length / productsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayPage(currentPage);
+                }
+            });
+        }
+
+        displayPage(currentPage);
+        displayPagination();
+    </script>
+</body>
+
+</html>

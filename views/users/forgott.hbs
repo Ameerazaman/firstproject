@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/otp.css">
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+    </style>
+</head>
+
+<body>
+
+  
+    <form action="/user/forgototpverify" method="post">
+    {{#if otpsubmit}}
+    <div class="box1">
+        <div style="padding-top: 10%;border: 1px;" class="title">
+
+            <label for="">Enter Your OTP</label>
+        </div>
+    </div>
+    <div class="otp-input-fields">
+
+        <input type="number" name="otp">
+    </div>
+    <div class="result">
+        <p id="_otp" class="_notok">
+
+            <button type="submit" class="btn btn-warning otp-verify">Next</button>
+        </p>
+    </div>
+   
+    </form>
+    <div class="result">
+        <p id="_otp" class="_notok">
+            <a href="/user/resend-otp"><button style="display: none;" type="submit"
+                    class="btn btn-warning otp-btn">Resend</button></a>
+        </p>
+    </div>
+    {{else}}
+      <form action="/user/forgotpassword" method="post">
+        <form action="javascript: void(0)" class="otp-form" name="otp-form">
+            <div class="box1">
+                <div style="padding-top: 10%;border: 1px;" class="title">
+                    <p style="color: rgb(66, 70, 70);font-size:large ;">Please enter the Email to verify your account
+                    </p>
+                    <span style="color: red;">{{this.message}}</span>
+                    <label for="">Enter Your Email</label>
+                </div>
+            </div>
+            <div class="otp-input-fields">
+                <input type="email" placeholder="email" id="email" name="email"><br>
+                <button type="submit">submit</button>
+            </div>
+        </form>
+    </form>
+{{/if}}
+<br><br><br>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/style.css">
+    <script>
+        let count = 30
+        let timer = setInterval(function () {
+            console.log("timer")
+            document.getElementById("otp-Time").innerHTML = count;
+
+            count--;
+            if (count < 0) {
+                clearInterval(timer)
+                document.querySelector('.otp-btn').classList.remove('otp-btn')
+                document.querySelector('.otp-verify').classList.add('otp-btn')
+            }
+        }, 1000);
+
+    </script>
+</body>
+
+</html>

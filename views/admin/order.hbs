@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,  
+                   initial-scale=1.0">
+  <title>GeeksForGeeks</title>
+
+  <link rel="stylesheet" href="/dashboard.css">
+  <style>
+    @media only screen and (min-width: 768px) {
+      .global-container {
+        max-width: 1000px;
+        padding: 0 25px;
+      }
+
+      .cart-preview {
+        float: right;
+        margin-left: 90px;
+      }
+    }
+
+    @media only screen and (min-width: 900px) {
+      :root {
+        --text-xs: 12px;
+        --text-s: 16px;
+        --text-m: 18px;
+        --text-l: 36px;
+        --one-em: 22px;
+      }
+    }
+
+    .container {
+      margin-left: 200px;
+    }
+
+    button {
+      background-color: rgb(26, 142, 245);
+    }
+
+    .div-button {
+      background-color: white;
+      color: #4aa6f2;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #282929;
+      padding: 10px;
+      border-radius: 10px;
+      width: 200px;
+    }
+
+    .container {
+      margin-left: 200px;
+    }
+
+    @media (min-width: 1025px) {
+      .h-custom {
+        height: 100vh !important;
+      }
+    }
+
+    .card-body {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Style for the product information in the cart */
+    .product-info {
+      display: flex;
+      align-items: center;
+    }
+
+    .product-info img {
+      width: 65px;
+      height: 65px;
+      margin-right: 10px;
+    }
+
+    .product-details {
+      flex: 1;
+    }
+
+    .product-details h5 {
+      margin: 0;
+      font-size: 16px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .product-details p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    /* Style for the quantity input and buttons */
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+    }
+
+    .quantity-controls button {
+      width: 30px;
+      height: 30px;
+    }
+
+    /* Style for the delete button */
+    .delete-button {
+      color: #cecece;
+      cursor: pointer;
+    }
+
+    /* Style for the card details */
+    .card-details {
+      color: white;
+    }
+
+    .card-details h5 {
+      margin-bottom: 0;
+    }
+
+    .total-amount {
+      font-weight: bold;
+    }
+
+    /* Responsive styles for smaller screens */
+    @media (max-width: 768px) {
+      .card-body {
+        flex-direction: column;
+      }
+    }
+
+    .dropbtn {
+      background-color: #99b2e9;
+      color: white;
+      padding: 6px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: rgb(78, 75, 75);
+      padding: 8px 10px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      background-color: #3a3b3b;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="navcontainer">
+      <nav class="nav">
+        <div>
+          <div style="background-color: rgb(47, 47, 189);" class="option1 nav-option">
+            <img src="/images/download.png" class="nav-img" alt="dashboard">
+            <h5 style="color:white;background-color:  ;"> Main Menu</h5>
+          </div>
+
+          <div class="option2 nav-option">
+            <img src="/images/dashboard.png" class="nav-img" alt="dashboard">
+            <a href="/admin/dashboard">
+              <h5> Dashboard</h5>
+            </a>
+          </div>
+
+          <div class="option2 nav-option">
+            <img src="/images/products.png" class="nav-img" alt="articles">
+            <a href="/admin/product">
+              <h5>Products</h5>
+            </a>
+          </div>
+
+          <div class="nav-option option3">
+            <img src="/images/catogary.png" class="nav-img" alt="report">
+            <a href="/admin/category">
+              <h5>Category</h5>
+            </a>
+          </div>
+
+          <div class="nav-option option4">
+            <img src="/images/order.png" class="nav-img" alt="institution">
+            <a href="/order">
+              <h5>Orders</h5>
+            </a>
+          </div>
+
+          <div class="nav-option option5">
+            <img src="/images/new coupon.png" class="nav-img" alt="blog">
+            <a href="/coupon">
+              <h5>Coupon</h5>
+            </a>
+          </div>
+
+          <div class="nav-option option6">
+            <img src="/images/coupon.png" class="nav-img" alt="settings">
+              <a href="/referaloffer"><h5> Offer</h5>
+            </a>
+          </div>
+          <div class="nav-option option6">
+            <img src="/images/customers.png" class="nav-img" alt="settings">
+            <a href="/admin/customers">
+              <h5>Customers</h5>
+            </a>
+          </div>
+          
+          <div class="nav-option logout">
+            <img src="/images/logout.png" class="nav-img" alt="logout">
+            <a href="/admin/logout">
+              <h5>Logout</h5>
+            </a>
+          </div>
+
+        </div>
+      </nav>
+    </div>
+    <div class="main">
+
+      <div class="searchbar2">
+        <input type="text" name="" id="" placeholder="Search">
+        <div class="searchbtn">
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png"
+            class="icn srchicn" alt="search-button">
+        </div>
+      </div>
+
+
+
+      <div class="report-container">
+        <div class="report-header">
+          <h1 class="recent-Articles">Order List</h1>
+
+        </div>
+        {{#each data}}
+        <div style="padding: 20px;margin-top: 30px;" class="card mb-3 ">
+          <div style="display: flex;justify-content: space-evenly;">
+            <p class="text-success">
+
+            <div class="dropdown">Status:
+              <button class="dropbtn">{{this.status}}</button>
+              <div class="dropdown-content">
+                <a href="/order/change-status/{{this._id}}/placed">Placed</a>
+                <a href="/order/change-status/{{this._id}}/shipped">Shipped</a>
+                <a href="/order/change-status/{{this._id}}/canceled">Canceled</a>
+                <a href="/order/change-status/{{this._id}}/delivered">Delivered</a>
+              </div>
+            </div>
+
+
+            </p>
+
+            <p>Customer:{{this.address.fullname}}</p>
+            </a>
+            <p>Date:{{this.orderedAt}}</p>
+          </div>
+          {{#each this.products}}
+          <div class="card-body">
+
+            <div class="product-info">
+              <div>
+                {{#if this.product.image}}
+                <img src="/images/{{this.product.image}}" class="img-fluid rounded-3" alt="Shopping item"
+                  style="width: 65px;">
+                  {{else}}
+                   <img src="/images/{{this.product.productImage1}}" class="img-fluid rounded-3" alt="Shopping item"
+                  style="width: 65px;">
+                  {{/if}}
+              </div>
+              <div class="product-details ms-3">
+                <h5>{{this.product.product}}</h5>
+                <p class="small mb-0">256GB, Navy Blue</p>
+              </div>
+            </div>
+            <div class="quantity-controls">
+              <div style="width: 80px; margin-left: 30px;">
+                <p class="mb-0">{{this.subtotal}}</p>
+              </div>
+
+              <div style="width: 80px; margin-left: 30px;">
+                <a href=""></a>
+              </div>
+
+              <div class="delete-button">
+                <a href="/cart/deletecart/{{this._id}}"><i class="fas fa-trash-alt"></i></a>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+
+        {{/each}}
+
+      </div>
+      <br>
+     
+      {{!-- /<a style="margin-left:90%;padding-top: 20px;" href="#"><button class="view">Download</button></a> --}}
+    <div class="pagination">
+        <button class="button-79"
+            style="width: auto;color: rgb(26, 25, 25);margin-left: 50%;background-color: rgb(240, 240, 240);"
+            id="prev">&laquo; Prev</button>
+
+        <button class="button-79" style="width: auto;color: rgb(27, 27, 27);margin-left: 5px;background-color: #e7e6e6;"
+            id="next">Next &raquo;</button>
+    </div>
+    </div>
+  </div>
+
+  </div>
+  
+  <script src="/javascript.js"></script>
+  <script>
+     document.addEventListener("DOMContentLoaded", function () {
+        const productCards = document.querySelectorAll('.card');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+
+        let currentPage = 1;
+        const productsPerPage = 9;
+
+        function showPage(page) {
+            const startIndex = (page - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+
+            productCards.forEach((card, index) => {
+                if (index >= startIndex && index < endIndex) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function updatePaginationButtons() {
+            prevButton.disabled = currentPage === 1;
+            nextButton.disabled = currentPage === Math.ceil(productCards.length / productsPerPage);
+        }
+
+        function goToPrevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+                updatePaginationButtons();
+            }
+        }
+
+        function goToNextPage() {
+            if (currentPage < Math.ceil(productCards.length / productsPerPage)) {
+                currentPage++;
+                showPage(currentPage);
+                updatePaginationButtons();
+            }
+        }
+
+        prevButton.addEventListener('click', goToPrevPage);
+        nextButton.addEventListener('click', goToNextPage);
+
+        // Initially show the first page
+        showPage(currentPage);
+        updatePaginationButtons();
+    });
+  </script>
+</body>
+
+</html>

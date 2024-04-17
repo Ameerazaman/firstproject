@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,  
+                   initial-scale=1.0">
+  <title>GeeksForGeeks</title>
+
+  <link rel="stylesheet" href="/dashboard.css">
+  {{!-- pagination --}}
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+    }
+
+    .formbold-mb-5 {
+      margin-bottom: 20px;
+    }
+
+    .formbold-pt-3 {
+      padding-top: 12px;
+    }
+
+    .formbold-main-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px;
+    }
+
+    .formbold-form-wrapper {
+      margin: 0 auto;
+      max-width: 550px;
+      width: 100%;
+      background: white;
+    }
+
+    .formbold-form-label {
+      display: block;
+      font-weight: 500;
+      font-size: 16px;
+      color: #07074d;
+      margin-bottom: 12px;
+    }
+
+    .formbold-form-label-2 {
+      font-weight: 600;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .formbold-form-input {
+      width: 100%;
+      padding: 12px 24px;
+      border-radius: 6px;
+      border: 1px solid #e0e0e0;
+      background: white;
+      font-weight: 500;
+      font-size: 16px;
+      color: #6b7280;
+      outline: none;
+      resize: none;
+    }
+
+    .formbold-form-input:focus {
+      border-color: #6a64f1;
+      box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .formbold-btn {
+      text-align: center;
+      font-size: 16px;
+      border-radius: 6px;
+      padding: 14px 32px;
+      border: none;
+      font-weight: 600;
+      background-color: #6a64f1;
+      color: white;
+      cursor: pointer;
+    }
+
+    .formbold-btn:hover {
+      box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .formbold--mx-3 {
+      margin-left: -12px;
+      margin-right: -12px;
+    }
+
+    .formbold-px-3 {
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .flex-wrap {
+      flex-wrap: wrap;
+    }
+
+    .w-full {
+      width: 100%;
+    }
+
+    label {
+      padding: auto;
+      font-size: larger;
+       margin: 3px;
+    }
+
+    .formbold-file-input input {
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .formbold-file-input label {
+      position: relative;
+      border: 1px dashed #e0e0e0;
+      border-radius: 6px;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      text-align: center;
+    }
+
+    .formbold-drop-file {
+      display: block;
+      font-weight: 600;
+      color: #07074d;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .formbold-or {
+      font-weight: 500;
+      font-size: 16px;
+      color: #6b7280;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .formbold-browse {
+      font-weight: 500;
+      font-size: 16px;
+      color: #07074d;
+      display: inline-block;
+      padding: 8px 28px;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+    }
+
+    .formbold-file-list {
+      border-radius: 6px;
+      background: #f5f7fb;
+      padding: 16px 32px;
+    }
+
+    .formbold-file-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .formbold-file-item button {
+      color: #07074d;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .formbold-file-name {
+      font-weight: 500;
+      font-size: 16px;
+      color: #07074d;
+      padding-right: 12px;
+    }
+
+    .formbold-progress-bar {
+      margin-top: 20px;
+      position: relative;
+      width: 100%;
+      height: 6px;
+      border-radius: 8px;
+      background: #e2e5ef;
+    }
+
+    .formbold-progress {
+      position: absolute;
+      width: 75%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: #6a64f1;
+      border-radius: 8px;
+    }
+
+      {
+        {
+        !-- img {
+          width: 100px;
+          height: 100px;
+          padding: 20px;
+        }
+
+        --
+      }
+    }
+
+    @media (min-width: 540px) {
+      .sm\:w-half {
+        width: 50%;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+
+  <div class="main-container">
+
+    <div class="navcontainer">
+      <nav class="nav">
+        <div>
+          <div style="background-color: rgb(47, 47, 189);" class="option1 nav-option">
+            <img src="/images/download.png" class="nav-img" alt="dashboard">
+            <h5 style="color:white;background-color:  ;"> Main Menu</h5>
+          </div>
+
+          <div class="option2 nav-option">
+            <img src="/images/dashboard.png" class="nav-img" alt="dashboard">
+            <a style="color: #262728;text-decoration: none;" href="/admin/dashboard">
+              <h5> Dashboard</h5>
+            </a>
+          </div>
+
+          <div class="option2 nav-option">
+            <img src="/images/products.png" class="nav-img" alt="articles">
+            <a style="color: #262728;text-decoration: none;" href="/admin/product">
+              <h5>Products</h5>
+            </a>
+          </div>
+
+          <div class="nav-option option3">
+            <img src="/images/catogary.png" class="nav-img" alt="report">
+            <a style="color: #262728;text-decoration: none;" href="/admin/category">
+              <h5>Category</h5>
+            </a>
+          </div>
+
+          <div class="nav-option option4">
+            <img src="/images/order.png" class="nav-img" alt="institution">
+            <a style="color: #262728;text-decoration: none;" href="/order">
+              <h5>Orders</h5>
+            </a>
+          </div>
+
+          <div class="nav-option option5">
+            <img src="/images/new coupon.png" class="nav-img" alt="blog">
+            <a style="color: #262728;text-decoration: none;" href="/coupon">
+              <h5>Coupon</h5>
+            </a>
+          </div>
+
+          <div class="nav-option option6">
+            <img src="/images/coupon.png" class="nav-img" alt="settings">
+            <a style="color: #262728;text-decoration: none;" href="/referaloffer">
+              <h5> Offer</h5>
+            </a>
+          </div>
+          <div class="nav-option option6">
+            <img src="/images/customers.png" class="nav-img" alt="settings">
+            <a style="color: #262728;text-decoration: none;" href="/admin/customers">
+              <h5>Customers</h5>
+            </a>
+          </div>
+
+          <div class="nav-option logout">
+            <img src="/images/logout.png" class="nav-img" alt="logout">
+            <a style="color: #262728;text-decoration: none;" href="/admin/logout">
+              <h5>Logout</h5>
+            </a>
+          </div>
+
+        </div>
+      </nav>
+    </div>
+    <div class="main">
+
+      <div class="searchbar2">
+        <input type="text" name="" id="" placeholder="Search">
+        <div class="searchbtn">
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png"
+            class="icn srchicn" alt="search-button">
+        </div>
+      </div>
+
+      <div class="report-container">
+        <div class="report-header">
+          <h1 class="recent-Articles">Product</h1>
+        </div>
+        <div class="formbold-main-wrapper">
+
+          <div class="formbold-form-wrapper">
+
+            <form action="/admin/add-product" method="POST" enctype="multipart/form-data" id="add-product-form">
+              <h4 style="text-align: center;">Add new Products</h4>
+              <span style="color: red;">{{this.message}}</span>
+              <div class="formbold-mb-5">
+                <label style="color: #262728;">Name of Product</label>
+                <span class="text-danger" id="product-name-error"></span><br>
+                <input type="text" name="product" id="product" placeholder="Enter your Product"
+                  class="formbold-form-input" />
+
+                <label style="color: #262728;">Category</label>
+                <br>
+                <span class="text-danger" id="category-name-error"></span>
+                <select name="category" id="category">
+                  {{#each categorydata}}
+                  <option value="{{this.category}}">{{this.category}}</option>
+                  {{/each}}
+                </select>
+
+                <br>
+                <label style="color: #262728;">Description</label><br>
+                <span class="text-danger" id="description-name-error"></span>
+                <input type="text" name="description" id="description" placeholder="description of product"
+                  class="formbold-form-input" />
+
+                <label style="color: #262728;">Price</label><br>
+                <span class="text-danger" id="price-name-error"></span>
+                <input type="number" name="price" id="price" placeholder="Price of Product"
+                  class="formbold-form-input" />
+                <label style="color: #262728;">Quantity</label><br>
+                <span class="text-danger" id="quantity-name-error"></span>
+                <input type="number" name="quantity" id="quantity" placeholder="Price of Product"
+                  class="formbold-form-input" />
+                <br>
+
+                <label style="color: #262728;">Discount</label><br>
+                <span class="text-danger" id="discount-name-error"></span>
+                <input type="number" name="discount" id="discount" placeholder="Discount of product"
+                  class="formbold-form-input" /><br>
+
+                <br>
+                <label for="">Images</label>
+                <div class="input-group mb-3">
+                  <img id="preview1" src="" style="width: 100px; height: 100px; display:none" alt="Img">
+                  <div class="input-group mb-3">
+                    <input id="productImage1" name="productImage1" type="file" class="form-control"
+                      placeholder="Product Image1" onchange="displayImage1()" required>
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <img id="preview2" src="" style="width: 100px; height: 100px; display:none" alt="Img">
+                  <div class="input-group mb-3">
+                    <input id="productImage2" name="productImage2" type="file" class="form-control"
+                      placeholder="Product Image2" onchange="displayImage2()" required>
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <img id="preview3" src="" style="width: 50px; height: 50px; display:none" alt="Img">
+                  <div class="input-group mb-3">
+                    <input id="productImage3" name="productImage3" type="file" class="form-control"
+                      placeholder="Product Image3" onchange="displayImage3()" required>
+                  </div>
+                </div>
+                <div class="input-group mb-3">
+                  <img id="preview4" src="" style="width: 50px; height: 50px; display:none" alt="Img">
+                  <div class="input-group mb-3">
+                    <input id="productImage4" name="productImage4" type="file" class="form-control"
+                      placeholder="Product Image4" onchange="displayImage4()" required>
+                  </div>
+                </div>
+               
+
+                <button  class="view" type="submit">submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <script>
+
+
+    document.getElementById("add-product-form").addEventListener('submit', (e) => {
+      var product = document.getElementById("product").value;
+      document.getElementById("product-name-error").innerHTML;
+      if (product === '') {
+        document.getElementById("product-name-error").innerHTML = 'This field is required'
+        e.preventDefault()
+      }
+      else if (/^\s|\s$/.test(product)) {
+        document.getElementById("product-name-error").innerHTML = 'Space is not allowed'
+        e.preventDefault()
+      }
+
+
+      var category = document.getElementById("category").value
+      document.getElementById("category-name-error").innerHTML;
+      if (category === '') {
+        document.getElementById("category-name-error").innerHTML = "This field is required"
+        e.preventDefault()
+      }
+      else if (/^\s|\s$/.test(category)) {
+        document.getElementById("category-name-error").innerHTML = 'Space is not allowed'
+        e.preventDefault()
+      }
+
+
+      var description = document.getElementById("description").value
+      document.getElementById("description-name-error").innerHTML;
+      if (description === '') {
+        document.getElementById("description-name-error").innerHTML = "This field is required"
+        e.preventDefault()
+      }
+      
+
+      var price = document.getElementById("price").value
+      document.getElementById("price-name-error").innerHTML;
+      if (price === '') {
+        document.getElementById("price-name-error").innerHTML = "This field is required"
+        e.preventDefault()
+      }
+      else if (price <= 0) {
+        document.getElementById("price-name-error").innerHTML = "price should not be negative"
+        e.preventDefault()
+      }
+      else if (/^\s|\s$/.test(price)) {
+        document.getElementById("price-name-error").innerHTML = 'Space is not allowed'
+        e.preventDefault()
+      }
+
+
+      var discount = document.getElementById("discount").value
+      document.getElementById("discount-name-error").innerHTML;
+      if (discount === '') {
+        document.getElementById("discount-name-error").innerHTML = "This field is required"
+        e.preventDefault()
+      }
+      else if (discount <= 0) {
+        document.getElementById("discount-name-error").innerHTML = "price should not be negative"
+        e.preventDefault()
+      }
+      {{!-- else if (discount = price) {
+        document.getElementById("discount-name-error").innerHTML = "Discount greaterthan price "
+        e.preventDefault()
+      } --}}
+      else if (/^\s|\s$/.test(discount)) {
+        document.getElementById("discount-name-error").innerHTML = 'Space is not allowed'
+        e.preventDefault()
+      }
+
+
+
+      var quantity = document.getElementById("quantity").value
+      document.getElementById("quantity").innerHTML;
+      if (quantity === '') {
+        document.getElementById("quantity-name-error").innerHTML = "This field is required"
+        e.preventDefault()
+      }
+      else if (quantity < 0) {
+        document.getElementById("quantity-name-error").innerHTML = "quantity lessthan zero "
+        e.preventDefault()
+      }
+      else if (/^\s|\s$/.test(quantity)) {
+        document.getElementById("quantity-name-error").innerHTML = 'Space is not allowed'
+        e.preventDefault()
+      }
+
+
+      var status = document.getElementById("status").value
+      document.getElementById("status-name-error").innerHTML;
+      if (status === '') {
+        document.getElementById("status-name-error").innerHTML = "This field is required"
+        e.preventDefault()
+      }
+      else if (/^\s|\s$/.test(status)) {
+        document.getElementById("status-name-error").innerHTML = 'Space is not allowed'
+        e.preventDefault()
+      }
+
+    })
+
+
+
+  
+                function displayImage1() {
+                    const reader = new FileReader()
+                    reader.onload = () => {
+                        preview1.src = reader.result
+                    }
+                    const file = document.querySelector("#productImage1").files[0];
+                    if (file) {
+                        preview1.style.display = 'block'
+                        reader.readAsDataURL(file)
+                    }
+                }
+                function displayImage2() {
+                    const reader = new FileReader()
+                    reader.onload = () => {
+                        preview2.src = reader.result
+                    }
+                    const file = document.querySelector("#productImage2").files[0];
+                    if (file) {
+                        preview2.style.display = 'block'
+                        reader.readAsDataURL(file)
+                    }
+                }
+                function displayImage3() {
+                    const reader = new FileReader()
+                    reader.onload = () => {
+                        preview3.src = reader.result
+                    }
+                    const file = document.querySelector("#productImage3").files[0];
+                    if (file) {
+                        preview3.style.display = 'block'
+                        reader.readAsDataURL(file)
+                    }
+                }
+
+                function displayImage4() {
+                    const reader = new FileReader()
+                    reader.onload = () => {
+                        preview4.src = reader.result
+                    }
+                    const file = document.querySelector("#productImage4").files[0];
+                    if (file) {
+                        preview4.style.display = 'block'
+                        reader.readAsDataURL(file)
+                    }
+                }
+
+                 function displayImage5() {
+                    const reader = new FileReader()
+                    reader.onload = () => {
+                        preview5.src = reader.result
+                    }
+                    const file = document.querySelector("#productImage5").files[0];
+                    if (file) {
+                        preview5.style.display = 'block'
+                        reader.readAsDataURL(file)
+                    }
+                }
+  </script>
+</body>
+
+</html>

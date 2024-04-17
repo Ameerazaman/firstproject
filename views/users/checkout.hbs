@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,700;1,700&family=Inter:wght@100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Inter;
+        }
+
+        #checkout-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 475px;
+        }
+
+        .check-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 475px;
+        }
+
+        form>section:first-child {
+            margin-bottom: 50px;
+        }
+
+        form>section>h3 {
+            font-size: var(--text-m);
+            font-weight: 600;
+            color: #333;
+        }
+
+        form .form-group:not(:last-child) {
+            margin-bottom: 12px;
+        }
+
+        form .form-groups {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 25px;
+        }
+
+        form .form-group>label {
+            font-size: var(--text-xs);
+            color: #4F4F4F;
+            font-weight: 600;
+        }
+
+        form .form-group>div {
+            position: relative;
+            margin-top: 7px;
+        }
+
+        form .form-group .material-icons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 15px;
+            font-size: var(--text-m);
+            color: #828282;
+        }
+
+        form .form-group input,
+        form .form-group select {
+            width: 100%;
+            padding: 12px 10px 12px 42px;
+            border-radius: 12px;
+            border: 1px solid #828282;
+            outline: none;
+            font-weight: 600;
+            font-size: var(--text-s);
+        }
+
+        option:disbled {
+            color: #828282;
+        }
+
+        form .form-group,
+        form .form-groups {
+            max-width: 475px;
+        }
+
+        form .form-group.checkbox {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        :root {
+            --active-black: #667185;
+            --slash-color: #98a2b3;
+            --pri-color: #178ceb;
+            --border-color: #e4e7ec;
+            --border-radius: 10px;
+            --heading-black-1: #101928;
+            --heading-black-2: #344054;
+            --paragraph-black-1: #475367;
+            --pink-bg-black: #667185;
+            --pink-card: #f5f8ff;
+            --white: #ffffff;
+            --font-weight-SemiBold: 600;
+            --font-weight-medium: 500;
+            --font-weight-regular: 400;
+            --form-grey-fill: #f9fafb;
+
+        }
+
+        .containercheck {
+            margin: 0px 112px;
+        }
+
+        hr {
+            border: 0.5px solid var(--border-color);
+            margin-block-end: 24px;
+            margin-block-start: 24px;
+        }
+
+        input {
+            padding: 16px;
+            margin-block-end: 10px;
+            margin-block-start: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            accent-color: var(--pri-color);
+        }
+
+        input:focus {
+            outline: 1px solid #747ffa;
+            border: none;
+        }
+
+        #Cards:focus,
+        #Delivery:focus {
+            outline: none;
+        }
+
+        label {
+            font-weight: var(--font-weight-medium);
+            color: var(--paragraph-black-2);
+            font-size: 14px;
+        }
+
+        .navcheckout {
+            margin-block-end: 28px;
+        }
+
+        ul {
+            display: flex;
+            gap: 10px;
+        }
+
+        .navcheckout li {
+            list-style: none;
+            font-weight: var(--font-weight-medium);
+        }
+
+        .navcheckout li:first-of-type,
+        .navcheckout li:nth-of-type(3) {
+            color: var(--pri-color);
+            cursor: pointer;
+        }
+
+        .navcheckout li:nth-of-type(2),
+        .navcheckout li:nth-of-type(4) {
+            color: var(--slash-color);
+        }
+
+        .navcheckout li:last-of-type {
+            color: var(--pink-bg-black);
+            cursor: pointer;
+        }
+
+        .bodice {
+            display: flex;
+            gap: 20px;
+        }
+
+        .maincheckout {
+            width: 60%;
+            height: auto;
+        }
+
+        .order-summary {
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            margin-block-end: 20px;
+        }
+
+        .order-smry {
+            display: flex;
+            align-items: center;
+            height: fit-content;
+
+        }
+
+        .order-smry h3 {
+            margin-block-end: 20px;
+            font-weight: var(--font-weight-SemiBold);
+            font-size: 24px;
+            color: var(--heading-black-1);
+        }
+
+        .order-smry span {
+            background-color: var(--pri-color);
+            color: var(--white);
+            border-radius: 50%;
+            padding: 5px 10px;
+            margin-inline-start: 10px;
+        }
+
+        .price {
+            display: flex;
+            align-items: center;
+            margin: 20px 0px;
+        }
+
+        .price ul {
+            flex-direction: column;
+            padding-inline-start: 20px;
+            margin-block-start: 20px;
+            list-style: none;
+        }
+
+        .price ul h4 {
+            width: 291px;
+            color: var(--heading-black-1);
+            font-size: 20px;
+            line-height: 24px;
+            letter-spacing: -1px;
+        }
+
+        .price ul li {
+            font-weight: var(--font-weight-regular);
+            color: var(--paragraph-black-1);
+
+        }
+
+        .price span {
+            font-weight: var(--font-weight-SemiBold);
+            color: var(--heading-black-1);
+            margin-inline-start: 100px;
+        }
+
+        .delivery-info {
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background-color: var(--pink-card);
+            padding: 32px;
+        }
+
+        .delivery-info .head-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-block-end: 20px;
+        }
+
+        .head-box svg {
+            cursor: pointer;
+        }
+
+        .contact-card h4 {
+            font-weight: var(--font-weight-SemiBold);
+            color: var(--heading-black-2);
+            margin-block-end: 20px;
+        }
+
+        .contact-card:hover {
+            outline: 1px solid blue;
+        }
+
+        .address {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-block-end: 20px;
+            color: var(--pink-bg-black);
+            margin-left: 20px;
+
+        }
+
+        label {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: large;
+            margin-left: 10px;
+        }
+
+        .aside {
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            width: 40%;
+            height: auto;
+            padding: 32px;
+        }
+
+        .aside h3 {
+            margin-block-end: 32px;
+            font-weight: var(--font-weight-SemiBold);
+            font-size: 24px;
+            color: var(--heading-black-1);
+        }
+
+
+        form h4 {
+            font-weight: var(--font-weight-SemiBold);
+            color: var(--heading-black-1);
+            margin-block-end: 20px;
+            font-size: 16px;
+        }
+
+        .discount {
+            display: flex;
+            align-items: center;
+            column-gap: 20px;
+            margin-block-end: 20px;
+            /* border: 1px solid var(--border-color);
+    border-radius: var(--border-radius); */
+        }
+
+        .discount input {
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            padding: 18px 16px;
+            width: 242px;
+        }
+
+        .discount button {
+            background-color: var(--pri-color);
+            color: var(--white);
+            border-radius: 30px;
+            padding: 18px 16px;
+            border: none;
+            font-weight: var(--font-weight-SemiBold);
+            cursor: pointer;
+            width: 102px;
+
+        }
+
+
+        .pay-with label {
+            font-size: 16px;
+        }
+
+        .info input {
+            width: 100%;
+        }
+
+
+        .cvv {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            width: 100%;
+            margin-block-end: 20px;
+        }
+
+        .cvv1 {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .cvv1 label {
+            margin-block-end: -20px;
+        }
+
+        .cvv svg {
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 42px;
+        }
+
+        .cost {
+            display: flex;
+            justify-content: space-between;
+            color: var(--heading-black-2);
+            margin-block-end: 16px;
+        }
+
+        #total:first-child {
+            font-weight: var(--font-weight-medium);
+            color: var(--heading-black-2);
+        }
+
+        #total:nth-child(2) {
+            font-weight: var(--font-weight-SemiBold);
+            color: #1d2739;
+        }
+
+        .pay-button {
+            background-color: var(--pri-color);
+            color: var(--white);
+            border-radius: 30px;
+            padding: 18px 16px;
+            border: none;
+            font-weight: var(--font-weight-SemiBold);
+            cursor: pointer;
+            width: 100%;
+            margin-block-start: 28px;
+        }
+
+        @media screen and (max-width: 1200px) {
+            .container {
+                margin: 0px;
+                width: 100%;
+                padding: 0;
+            }
+
+            .navcheckout {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .bodice {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .maincheckout {
+                width: 50%;
+                margin: 0px;
+                padding: 0;
+                margin-block-start: 20px;
+            }
+
+            .price {
+                flex-direction: column;
+            }
+
+            .price span {
+                margin-block-start: 10px;
+                margin-inline-start: -210px;
+            }
+
+            .aside {
+                width: 50%;
+                margin-block-start: 20px;
+            }
+
+        }
+
+        @media screen and (max-width: 800px) {
+            .container {
+                margin: 0px;
+                width: 100%;
+                padding: 0;
+            }
+
+            .navcheckout {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .bodice {
+                flex-direction: column;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+
+            }
+
+            .maincheckout {
+                width: 100%;
+                margin: 0px;
+                padding: 0;
+                margin-block-start: 20px;
+
+            }
+
+            .price {
+                flex-direction: column;
+            }
+
+            .price span {
+                margin-block-start: 10px;
+                margin-inline-start: -210px;
+            }
+
+            .aside {
+                width: 100%;
+                padding: 20px;
+                margin-block-start: 20px;
+
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5 {
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+
+            .clicked-style {
+                background-color: rgb(144, 229, 238);
+
+                border-color: blue;
+                /* Change border color to blue */
+            }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <br><br><br><br>
+    <div class="containercheck">
+
+
+        <div style="padding-top: 30px;" class="bodice">
+
+            <div class="maincheckout">
+                <h5 style="color: red;">{{this.Outofstock}}</h5>
+                <div class="main-box">
+                    <div style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);" class="order-summary">
+                        <div class="order-smry">
+                            <h3>Order Summary </h3>
+                        </div>
+                        {{#each data }}
+                        <div class="price">
+                            <img style="width: 120px; height:120px; border-radius: 15px;"
+                                src="/images/{{this.product.productImage1}}" alt="Rectangle 528">
+
+                            <ul>
+                                <li>
+                                    <h4>{{this.product.product}}</h4>
+                                </li>
+                                <li>
+                                    <h4>{{this.quantity}}</h4>
+                                </li>
+
+                            </ul>
+
+                            <span>{{this.subtotal}}</span>
+                        </div>
+                        {{/each}}
+                        <hr>
+
+
+                    </div>
+                    <div style="width: 45%;margin-left: 75%;color: rgb(8, 0, 255);" class="div-button"
+                        onclick="NewAddress()">+Add New Address</div><br>
+                    <span style="color: red;">{{this.message}}</span>
+                    <form action="/checkout/save-address" method="post" id="checkout-form">
+                        <section id="Address" style="display: none;">
+                            <h3>Shipping address</h3><br>
+                            <div class="form-group">
+                                <label for="fullname">Full name</label>
+                                <div>
+                                    <input type="text" id="fullname" name="fullname" placeholder="Your full name..." />
+                                    <span class="text-danger" id="fullname-error"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <div>
+                                    <input type="text" id="address" placeholder="Your address..." name="address" />
+                                    <span class="text-danger" id="address-error"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <div>
+                                    <input type="text" id="city" name="city" placeholder="Your city..." />
+                                    <span class="text-danger" id="city-error"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">Phone</label>
+                                <div>
+                                    <input type="Number" id="phone" name="phone" placeholder="Your Phone Number..." />
+                                    <span class="text-danger" id="phone-error"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">Email</label>
+                                <div>
+                                    <input type="text" id="email" name="email" placeholder="Your Email..." />
+                                    <span class="text-danger" id="email-error"></span>
+                                </div>
+                            </div>
+                            <div class="form-groups">
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <div>
+                                        <select name="state" id="state">
+                                            <option disabled selected>Your state...</option>
+                                            <option>Kerala</option>
+                                            <option>karnadaka</option>
+                                            <option>Thamilnadu</option>
+                                            <option>Andra</option>
+                                            <option>Delhi</option>
+                                            <option>Punjab</option>
+                                        </select>
+                                        <span class="text-danger" id="state-error"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="postal-code">Postal code</label>
+                                    <div>
+                                        <input type="text" id="postal-code" name="postalcode"
+                                            placeholder="Your postal code..." />
+                                        <span class="text-danger" id="postalcode-error"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn bg-primary" type="submit">Save</button>
+                        </section>
+                    </form>
+                    <div style="box-shadow: 0 4px 8px rgba(89, 103, 188, 0.3);" class="delivery-info">
+                        <div class="head-box">
+                            <h3>Delivery Information</h3>
+                        </div>
+                        {{#each resultadd}}
+
+                        <a href="/checkout/edit/{{this._id}}"><svg width="70" height="20"
+                                style="margin-left: 75%;text-align: end; color: blue;" viewBox="0 0 70 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M24.6634 2.42499C23.5412 1.30284 21.7218 1.30283 20.5997 2.42499L13.4951 9.52955C12.9851 10.0395 12.6543 10.7012 12.5523 11.4152L12.3464 12.8563C12.1893 13.9563 13.1321 14.8991 14.2321 14.7419L15.6732 14.536C16.3872 14.434 17.0488 14.1032 17.5588 13.5932L24.6634 6.48868C25.7855 5.36653 25.7855 3.54715 24.6634 2.42499ZM21.9528 3.45876C22.4225 3.13854 23.0681 3.18679 23.4849 3.6035C23.9016 4.02022 23.9498 4.66588 23.6296 5.13561L21.9528 3.45876ZM20.7593 4.62236L22.466 6.32903L16.3803 12.4147C16.1253 12.6697 15.7945 12.8351 15.4375 12.8861L13.9964 13.092L14.2022 11.6509C14.2532 11.2939 14.4186 10.9631 14.6736 10.7081L20.7593 4.62236Z"
+                                    fill="blue" />
+                                <path
+                                    d="M12.5 1.66667C10.6591 1.66667 9.16667 3.15905 9.16667 5V15C9.16667 16.841 10.6591 18.3333 12.5 18.3333H22.5C24.341 18.3333 25.8333 16.841 25.8333 15V10C25.8333 9.53977 25.4602 9.16667 25 9.16667C24.5398 9.16667 24.1667 9.53977 24.1667 10V15C24.1667 15.9205 23.4205 16.6667 22.5 16.6667H12.5C11.5795 16.6667 10.8333 15.9205 10.8333 15V5C10.8333 4.07953 11.5795 3.33334 12.5 3.33334H14.7368C15.1971 3.33334 15.5702 2.96024 15.5702 2.5C15.5702 2.03977 15.1971 1.66667 14.7368 1.66667H12.5Z"
+                                    fill="blue" />
+                                <path
+                                    d="M36.8588 15V4.81818H43.4809V6.36435H38.7032V9.12855H43.1379V10.6747H38.7032V13.4538H43.5207V15H36.8588ZM48.1169 15.1342C47.517 15.1342 46.9801 14.9801 46.5061 14.6719C46.0322 14.3636 45.6576 13.9162 45.3825 13.3295C45.1075 12.7429 44.9699 12.0303 44.9699 11.1918C44.9699 10.3433 45.1091 9.62737 45.3875 9.04403C45.6692 8.45739 46.0487 8.01491 46.526 7.71662C47.0033 7.41501 47.5352 7.2642 48.1219 7.2642C48.5693 7.2642 48.9372 7.34044 49.2256 7.4929C49.5139 7.64205 49.7426 7.82268 49.9117 8.0348C50.0807 8.24361 50.2116 8.44081 50.3044 8.62642H50.379V4.81818H52.1837V15H50.4138V13.7969H50.3044C50.2116 13.9825 50.0774 14.1797 49.9017 14.3885C49.7261 14.594 49.4941 14.7696 49.2057 14.9155C48.9173 15.0613 48.5544 15.1342 48.1169 15.1342ZM48.6191 13.6577C49.0002 13.6577 49.325 13.5549 49.5935 13.3494C49.8619 13.1406 50.0658 12.8506 50.205 12.4794C50.3442 12.1082 50.4138 11.6757 50.4138 11.1818C50.4138 10.688 50.3442 10.2588 50.205 9.89418C50.0691 9.52959 49.8669 9.24621 49.5985 9.04403C49.3333 8.84186 49.0068 8.74077 48.6191 8.74077C48.218 8.74077 47.8833 8.84517 47.6148 9.05398C47.3463 9.26278 47.1441 9.55114 47.0083 9.91903C46.8724 10.2869 46.8044 10.7079 46.8044 11.1818C46.8044 11.6591 46.8724 12.085 47.0083 12.4595C47.1475 12.8307 47.3513 13.1241 47.6198 13.3395C47.8915 13.5516 48.2246 13.6577 48.6191 13.6577ZM54.1015 15V7.36364H55.9012V15H54.1015ZM55.0063 6.27983C54.7213 6.27983 54.476 6.18537 54.2705 5.99645C54.065 5.80421 53.9623 5.57386 53.9623 5.3054C53.9623 5.03362 54.065 4.80327 54.2705 4.61435C54.476 4.42211 54.7213 4.32599 55.0063 4.32599C55.2947 4.32599 55.5399 4.42211 55.7421 4.61435C55.9476 4.80327 56.0503 5.03362 56.0503 5.3054C56.0503 5.57386 55.9476 5.80421 55.7421 5.99645C55.5399 6.18537 55.2947 6.27983 55.0063 6.27983ZM61.5651 7.36364V8.75568H57.1752V7.36364H61.5651ZM58.259 5.53409H60.0587V12.7031C60.0587 12.9451 60.0951 13.1307 60.1681 13.2599C60.2443 13.3859 60.3437 13.4721 60.4664 13.5185C60.589 13.5649 60.7249 13.5881 60.874 13.5881C60.9867 13.5881 61.0895 13.5798 61.1823 13.5632C61.2784 13.5466 61.3513 13.5317 61.401 13.5185L61.7043 14.9254C61.6082 14.9586 61.4706 14.995 61.2916 15.0348C61.116 15.0746 60.9005 15.0978 60.6453 15.1044C60.1946 15.1177 59.7886 15.0497 59.4273 14.9006C59.066 14.7481 58.7793 14.5128 58.5672 14.1946C58.3584 13.8764 58.2557 13.4787 58.259 13.0014V5.53409Z"
+                                    fill="blue" />
+                            </svg>
+
+                            <a style="text-decoration: none;" href="/checkout/delete/{{this._id}}"><small
+                                    style="color: blue;font-weight:700;">Delete</small></a>
+                            {{!-- <a style="text-decoration: none;" href="/checkout/select-Address/{{this._id}}"> --}}
+
+                                <form action="/checkout/create-order" method="post"
+                                    onsubmit="return checkPaymentOption()">
+
+                                    <div onclick="selectAddress()"
+                                        style=" border: 1px solid #cecbcb;padding: 20px;margin: 5px;border-radius: 10px;"
+                                        class="contact-card" id="contact-card">
+                                        <input type="radio" name="address" id="address" value="{{this._id}}"><label
+                                            for="">{{this.fullname}}</label>
+                                        <br>
+
+                                        <br>
+                                        <div class="address">
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M2.63322 0.898387C1.52722 0.371717 0.25 1.17815 0.25 2.40315V12.0945C0.25 13.0588 0.804565 13.9371 1.67517 14.3516L5.47506 16.1611C5.61717 16.2288 5.77554 16.2548 5.93184 16.2362L12.0259 15.5107L15.3668 17.1016C16.4728 17.6283 17.75 16.8219 17.75 15.5969V5.90551C17.75 4.94124 17.1954 4.06293 16.3248 3.64836L12.5249 1.83889C12.3862 1.77281 12.2318 1.74639 12.079 1.76257L8.51647 2.13955C8.50824 2.14042 8.50002 2.14142 8.49182 2.14253L5.96724 2.48601L2.63322 0.898387ZM16.0833 15.5969L13 14.1286V3.91109L15.6083 5.15313C15.8985 5.29132 16.0833 5.58409 16.0833 5.90551V15.5969ZM11.3333 13.9148V3.51744L8.7042 3.79566L6.66667 4.07287V14.4703L11.3333 13.9148ZM1.91667 2.40315L5 3.87141V14.0889L2.39172 12.8469C2.10152 12.7087 1.91667 12.4159 1.91667 12.0945V2.40315Z"
+                                                    fill="#F56630" />
+                                            </svg>
+                                            <span>{{this.address}} ,{{this.city}}, {{this.state}},
+                                                {{this.postalcode}}</span>
+                                        </div>
+
+                                        <div class="address">
+                                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M6.22873 1.33964C4.92698 0.0378887 2.81643 0.0378915 1.51468 1.33964L1.0684 1.78592C0.453097 2.40122 0.032241 3.32328 0.272292 4.32212C0.640302 5.85338 1.74771 8.64374 5.05021 11.9462C8.35271 15.2487 11.1431 16.3562 12.6743 16.7242C13.6732 16.9642 14.5952 16.5434 15.2105 15.9281L15.6568 15.4818C16.9586 14.18 16.9586 12.0695 15.6568 10.7677L14.8828 9.99366C13.8217 8.93261 12.1825 8.71133 10.8781 9.45305L10.7976 9.4988C10.2631 9.80274 9.64901 9.7779 9.21399 9.46307C8.86296 9.20903 8.52747 8.94169 8.29112 8.70533C8.05477 8.46898 7.78743 8.13349 7.53339 7.78247C7.21855 7.34744 7.19371 6.73337 7.49766 6.19884L7.5434 6.1184C8.28513 4.81398 8.06384 3.17475 7.00279 2.1137L6.22873 1.33964ZM2.69319 2.51815C3.34407 1.86728 4.39934 1.86728 5.05021 2.51815L5.82428 3.29221C6.3548 3.82274 6.46545 4.64235 6.09458 5.29456L6.04884 5.37501C5.46142 6.40805 5.44081 7.73378 6.18321 8.75961C6.4559 9.1364 6.78362 9.55485 7.11261 9.88384C7.4416 10.2128 7.86005 10.5406 8.23685 10.8132C9.26267 11.5556 10.5884 11.535 11.6214 10.9476L11.7019 10.9019C12.3541 10.531 13.1737 10.6417 13.7042 11.1722L14.4783 11.9462C15.1292 12.5971 15.1292 13.6524 14.4783 14.3033L14.032 14.7495C13.7097 15.0719 13.3543 15.1735 13.0638 15.1036C11.8396 14.8094 9.32012 13.8591 6.22873 10.7677C3.13733 7.67634 2.18703 5.15685 1.89282 3.93265C1.82299 3.64212 1.92454 3.2868 2.24691 2.96443L2.69319 2.51815Z"
+                                                    fill="#F56630" />
+                                            </svg>
+                                            <span>{{this.phone}}</span>
+                                        </div>
+
+                                        <div class="address">
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M15.8335 17.5C17.6745 17.5 19.1669 16.0076 19.1669 14.1667V6.68557C19.1672 6.67283 19.1672 6.66005 19.1669 6.64725V5.83333C19.1669 3.99238 17.6745 2.5 15.8335 2.5H4.16687C2.32592 2.5 0.833535 3.99238 0.833535 5.83333V6.64726C0.833238 6.66005 0.83324 6.67282 0.833535 6.68556V14.1667C0.833535 16.0076 2.32592 17.5 4.16687 17.5H15.8335ZM2.5002 14.1667C2.5002 15.0871 3.24639 15.8333 4.16687 15.8333H15.8335C16.754 15.8333 17.5002 15.0871 17.5002 14.1667V7.89753L11.2382 10.4023C10.4435 10.7202 9.55694 10.7202 8.76223 10.4023L2.5002 7.89753V14.1667ZM10.6192 8.85488L17.5002 6.10247V5.83333C17.5002 4.91286 16.754 4.16667 15.8335 4.16667H4.16687C3.24639 4.16667 2.5002 4.91286 2.5002 5.83333V6.10247L9.38122 8.85488C9.77857 9.01382 10.2218 9.01382 10.6192 8.85488Z"
+                                                    fill="#F56630" />
+                                            </svg>
+                                            <span>{{this.email}}</span>
+                                        </div>
+
+                                    </div>
+                            </a>
+                            {{/each}}
+                    </div>
+                </div>
+            </div>
+
+
+            <div style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);" class="aside">
+                <span style="color: red;">{{this.CODmessage}}</span>
+                {{!-- <form action="/checkout/create-order" method="post" onsubmit="return checkPaymentOption()"> --}}
+                    <div class="pay-with">
+                        <span style="color: red;">{{this.paymentMesage}}</span>
+                        <h4>Pay with</h4>
+
+                        {{!-- <input aria-label="credit card option" type="radio" id="Cards" aria-required="true"
+                            required name="payment" /><a style="text-decoration: none;color: #1d2739;"
+                            href="/checkout/save-payment/cash-on-delivery">
+                            Cash on Delivery </a><br />
+                        <input aria-label="debit card option" type="radio" id="Delivery" name="payment" /><a
+                            style="text-decoration: none;color: #1d2739;" href="/checkout/save-payment/online-payment">
+                            Online Payment</a><br />
+                        <input aria-label="debit card option" type="radio" id="Delivery" name="payment" /><a
+                            style="text-decoration: none;color: #1d2739;" href="/checkout/save-payment/wallet">
+                            Wallet</a><br /> --}}
+
+                        <input aria-label="cash on delivery option" type="radio" id="cash_on_delivery"
+                            aria-required="true" name="payment" value="cash-on-delivery" /> Cash on delivery<br />
+                        <input aria-label="debit card option" type="radio" id="Delivery" name="payment"
+                            value="online-payment" /> Online-payment<br />
+                        <input aria-label="debit card option" type="radio" id="Delivery" name="payment"
+                            value="wallet" /> Wallet<br />
+                    </div>
+                    <hr>
+
+
+
+                    {{#each result}}
+                    <div class="cost">
+                        <input type="number" style="display: none;" name="subtotal" value="{{this.totalPrice}}">
+                        <span>Sub Total</span> <span>{{this.totalPrice}}</span>
+                    </div>
+                    <div class="cost">
+                        <input type="number" style="display: none;" name="total_discount"
+                            value="{{this.totalDiscount}}">
+                        <span>Total Discount</span> <span>{{this.totalDiscount}}</span>
+                    </div>
+                    {{/each}}
+                    <div class="cost">
+                        {{!-- <span>Tax</span> <span>$49</span> --}}
+                    </div>
+                    <input type="number" name="ship_charge" value="{{this.shippingCharge}}" style="display: none;">
+                    <div class="cost">
+                        <span>Shipping</span> <span>+{{this.shippingCharge}}</span>
+                    </div>
+                    <input type="number" value="{{this.couponDiscount}}" style="display: none;" name="coupon_dis">
+                    <div class="cost">
+                        <span>Coupon discount</span> <span id="coupon_dis">-{{this.couponDiscount}}</span>
+                    </div>
+
+                    <input type="number" value="{{this.categoryOffer}}" name="category_off" style="display: none;">
+                    <div class="cost">
+                        <span>Category Offer</span> <span>-{{this.categoryOffer}}</span>
+                    </div>
+                    <hr>
+                    <input type="number" value="{{this.totalPrice}}" name="total_price" style="display: none;">
+                    <div class="cost" id="total">
+                        <span>Total</span>
+                        <h4 id="total_amt">{{this.totalPrice}}</h4>
+
+                    </div>
+
+                    <button style="width: 100%;" type="submit" class="pay-button"
+                        onclick="return checkPaymentOption()">Continue</button>
+                </form>
+                <hr>
+
+                <br>
+                <h6>Select Coupon</h6>
+                
+                <div style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);" class="discount_code mt-3 shadow">
+
+                    <div class="card">
+
+                        <div class="card-body">
+                            <span style="color: red;">{{this.invalidCoupon}}</span>
+                            <a class="d-flex justify-content-between" data-toggle="collaps" href="#collapsExample"
+                                aria-expanded="false" aria-controls="collapsExample">
+
+                                {{#if couponMessage}}
+                                Add a coupon discount
+                                <p style="color: red;">({{this.couponMessage}})</p>
+
+                                {{else}}
+                                Add a coupon discount(optional)
+                                {{/if}}
+                                <span><i class="fas fa-chevron-down pt-1"></i></span>
+
+                            </a>
+
+                            <div class="collaps" id="collapsExample">
+
+                                <div class="mt-3">
+                                    {{#each coupondata}}
+                                    <div style="display: flex;padding: 10px;">
+                                        <input style="width: 70%;" type="text" name="" value="{{this.code}}"
+                                            id="discount_code1" class="form-control font-weight-bold"
+                                            placeholder="Enter the discount code">
+                                        <button  style="margin-left: 10px;" class="btn btn-primary btn-sm mt-3"><a
+                                                style="text-decoration: none;color: white;"
+                                                href="/checkout/select-coupon/{{this._id}}">Apply</a></button>
+                                    </div>
+                                    {{/each}}
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <br><br>
+                <form action="/checkout/referal-offer" method="post">
+                    <h4>Apply Discount</h4>
+                    <div class="discount">
+                        <!-- <label>Apply Discount</label> <br> -->
+
+                        <input type="text" placeholder="Enter Coupon Code" name="referal">
+
+                        <button class="apply-btn">Apply</button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+</body>
+
+</html>
+<script>
+
+
+    function NewAddress() {
+        var x = document.getElementById("Address");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+
+    document.getElementById("checkout-form").addEventListener('submit', (e) => {
+        var fullname = document.getElementById("fullname").value;
+        document.getElementById("fullname-error").innerHTML;
+        if (fullname === '') {
+            document.getElementById("fullname-error").innerHTML = 'This field is required';
+            e.preventDefault()
+        }
+
+        var address = document.getElementById("address").value;
+        document.getElementById("address-error").innerHTML;
+        if (address === '') {
+            document.getElementById("address-error").innerHTML = 'This field is required'
+            e.preventDefault()
+        }
+
+        var city = document.getElementById("city").value;
+        document.getElementById("city-error").innerHTML;
+        if (city === '') {
+            document.getElementById("city-error").innerHTML = 'This field is required'
+            e.preventDefault()
+        }
+
+        var state = document.getElementById("state").value;
+        document.getElementById("state-error").innerHTML;
+        if (state === '') {
+            document.getElementById("state-error").innerHTML = 'This field is required'
+            e.preventDefault()
+        }
+
+        var postalcode = document.getElementById("postal-code").value;
+        document.getElementById("postalcode-error").innerHTML;
+        if (postalcode === '') {
+            document.getElementById("postalcode-error").innerHTML = 'This field is required'
+            e.preventDefault()
+        }
+
+        var email = document.getElementById("email").value;
+        document.getElementById("email-error").innerHTML;
+        if (email === '') {
+            document.getElementById("email-error").innerHTML = 'This field is required'
+            e.preventDefault()
+        }
+
+        var phone = document.getElementById("phone").value;
+        document.getElementById("phone").innerHTML;
+        if (phone === '') {
+            document.getElementById("phone-error").innerHTML = 'This field is required'
+            e.preventDefault()
+        }
+    })
+
+
+</script>
+<script>
+    function checkPaymentOption() {
+        var totalAmt = parseInt(document.getElementById("total_amt").innerHTML);
+        var paymentOption = document.querySelector('input[name="payment"]:checked');
+        var addressOption = document.querySelector('input[name="address"]:checked');
+        if (!paymentOption) {
+            // If no payment option is selected, show SweetAlert message
+            Swal.fire({
+                title: 'Please Select Payment Method',
+                text: 'Please select a payment method to proceed',
+                icon: 'warning',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+            });
+            return false; // Prevent form submission
+        }
+        if (!addressOption) {
+            // If no address is selected, show SweetAlert message with an option to select address
+            Swal.fire({
+                title: 'Please Select Address',
+                text: 'Please select an address to proceed',
+                icon: 'warning',
+                showCancelButton: true, // Add a cancel button
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'OK',
+                cancelButtonText: 'Cancel' // Change cancel button text
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect or handle the action to select an address
+                    // For example: window.location.href = '/select-address';
+                }
+            });
+            return false; // Prevent form submission
+        }
+        if (totalAmt > 10000 && paymentOption.value === 'cash-on-delivery') {
+            Swal.fire({
+                title: 'Payment Option Unavailable',
+                text: 'Cash on delivery is not available for orders exceeding 10000 Rs',
+                icon: 'warning',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+            });
+            return false; // Prevent form submission
+        } else {
+            return true; // Allow form submission
+        }
+    }
+</script>
+<script>
+    async function applyCoupon(couponId) {
+        try {
+            const response = await fetch(`/checkout/select-coupon/${couponId}`, {
+                method: 'GET', // or 'POST' if your endpoint requires a POST request
+                // You can add headers, body, etc. as needed
+            });
+            
+            .then((data))// Handle the response as needed
+            const total=document.getElementById("total_amt").innerHTML
+            var coupondiscount=total-data
+            total.innerHTML=coupondiscount
+            document.getElementById("coupon_dis").innerHTML=data
+
+            console.log('Coupon applied successfully');
+        } catch (error) {
+            console.error('Error applying coupon:', error);
+        }
+    }
+</script>
+
+</script>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,  
+                   initial-scale=1.0">
+  <title>GeeksForGeeks</title>
+
+  <link rel="stylesheet" href="/dashboard.css">
+  <style>
+    .pagination {
+      margin-top: 10px;
+    }
+
+    .pagination button {
+      margin-right: 5px;
+    }
+
+    .pagination button.active {
+      font-weight: bold;
+    }
+
+    button {
+      padding: 8px;
+      border-radius: 10px;
+      background-color: rgb(58, 86, 249);
+      color: aliceblue;
+
+    }
+
+    button:hover {
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="main-container">
+
+    <div class="navcontainer">
+      <nav class="nav">
+        <div>
+          <div style="background-color: rgb(47, 47, 189);" class="option1 nav-option">
+            <img src="/images/download.png" class="nav-img" alt="dashboard">
+            <h5 style="color:white;background-color:  ;"> Main Menu</h5>
+          </div>
+
+          <div class="option2 nav-option">
+            <img src="/images/dashboard.png" class="nav-img" alt="dashboard">
+            <a href="/admin/dashboard">
+              <h5> Dashboard</h5>
+            </a>
+          </div>
+
+          <div class="option2 nav-option">
+            <img src="/images/products.png" class="nav-img" alt="articles">
+            <a href="/admin/product">
+              <h5>Products</h5>
+            </a>
+          </div>
+
+          <div class="nav-option option3">
+            <img src="/images/catogary.png" class="nav-img" alt="report">
+            <a href="/admin/category">
+              <h5>Category</h5>
+            </a>
+          </div>
+
+          <div class="nav-option option4">
+            <img src="/images/order.png" class="nav-img" alt="institution">
+            <a href="/order">
+              <h5>Orders</h5>
+            </a>
+          </div>
+
+          <div class="nav-option option5">
+            <img src="/images/new coupon.png" class="nav-img" alt="blog">
+            <a href="/coupon">
+              <h5>Coupon</h5>
+            </a>
+          </div>
+
+          <div class="nav-option option6">
+            <img src="/images/coupon.png" class="nav-img" alt="settings">
+            <a href="/referaloffer">
+              <h5> Offer</h5>
+            </a>
+          </div>
+          <div class="nav-option option6">
+            <img src="/images/customers.png" class="nav-img" alt="settings">
+            <a href="/admin/customers">
+              <h5>Customers</h5>
+            </a>
+          </div>
+
+          <div class="nav-option logout">
+            <img src="/images/logout.png" class="nav-img" alt="logout">
+            <a href="/admin/logout">
+              <h5>Logout</h5>
+            </a>
+          </div>
+
+        </div>
+      </nav>
+    </div>
+    <div class="main">
+      <div class="searchbar2">
+        <input type="text" name="" id="" placeholder="Search">
+        <div class="searchbtn">
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png"
+            class="icn srchicn" alt="search-button">
+        </div>
+      </div>
+
+      {{!-- <div class="box-container">
+
+        <div class="box box1">
+          <div class="text">
+            <h2 class="topic-heading">60.5k</h2>
+            <h2 class="topic">Article Views</h2>
+          </div>
+
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(31).png"
+            alt="Views">
+        </div>
+
+        <div class="box box2">
+          <div class="text">
+            <h2 class="topic-heading">150</h2>
+            <h2 class="topic">Likes</h2>
+          </div>
+
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185030/14.png" alt="likes">
+        </div>
+
+        <div class="box box3">
+          <div class="text">
+            <h2 class="topic-heading">320</h2>
+            <h2 class="topic">Comments</h2>
+          </div>
+
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(32).png"
+            alt="comments">
+        </div>
+
+        <div class="box box4">
+          <div class="text">
+            <h2 class="topic-heading">70</h2>
+            <h2 class="topic">Published</h2>
+          </div>
+
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185029/13.png" alt="published">
+        </div>
+      </div> --}}
+
+      <div class="report-container">
+        <div class="report-header">
+          <h1 class="recent-Articles">Category</h1>
+          <a href="/admin/add-category"><button class="view">Category+</button></a>
+        </div>
+
+
+        <div class="container table-responsive py-5">
+          <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Catogary Name</th>
+                <th scope="col">Image</th>
+                <th scope="col">Offer</th>
+                <th scope="col">Description</th>
+                <th scope="col">List/unlist</th>
+             
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody id="categoryBody">
+              {{#each data}}
+              <tr>
+                <th scope="row">{{@index}}</th>
+                <td>{{this.category}}</td>
+                <td><img style="height: 20px;width: 20px;" src="/images/{{this.image}}" alt=""></td>
+                <td>{{this.offer}}</td>
+                <td>{{this.description}}</td>
+                    {{#if this.isUnlist}}
+                  <td>
+                    <button type="button" id="listProduct" class="btn btn-danger"
+                      onclick="unlistCategory('{{this._id}}')">list</button>
+                  </td>
+                  {{else}}
+                  <td>
+                    <button type="button" id="unlistProduct" class="btn btn-success"
+                      onclick="listCategory('{{this._id}}')">UnList</button>
+                  </td>
+                  {{/if}}
+                <td><a href="/admin/editCategory/{{this._id}}"><img style="height: 20px;width: ;20px" class="img-icon"
+                      src="data:image/png;base64,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"
+                      alt=""></button></a></td>
+                <td><a onclick="deleteCategory('{{this._id}}')" ><img style="height: 20px;width: ;20px" class="img-icon"
+                      src="data:image/png;base64,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"
+                      alt=""></button></a></td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+          <div id="pagination" class="pagination">
+            <button style="margin-left: 45%;" id="prevButton">Prev</button>
+            <button id="nextButton">Next</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script>
+    const productsPerPage = 5;
+    const tbody = document.getElementById('categoryBody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    let currentPage = 1;
+
+    function displayPage(page) {
+      const startIndex = (page - 1) * productsPerPage;
+      const endIndex = startIndex + productsPerPage;
+
+      rows.forEach((row, index) => {
+        if (index >= startIndex && index < endIndex) {
+          row.style.display = 'table-row';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    function displayPagination() {
+      document.getElementById('prevButton').addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          displayPage(currentPage);
+        }
+      });
+
+      document.getElementById('nextButton').addEventListener('click', () => {
+        const totalPages = Math.ceil(rows.length / productsPerPage);
+        if (currentPage < totalPages) {
+          currentPage++;
+          displayPage(currentPage);
+        }
+      });
+    }
+
+    displayPage(currentPage);
+    displayPagination();
+
+
+</script>
+{{!-- Unlist Category--}}
+     <script>
+    function unlistCategory(categoryId) {
+      swal({
+        title: "Are you sure?",
+        text: "Once unlisted, the product will not be visible to users!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+        .then((willUnlist) => {
+          if (willUnlist) {
+            // Perform AJAX request to unlist the product
+            fetch(`/admin/unListCategory/${categoryId}`, {
+              method: 'POST',
+            })
+              .then(response => {
+                if (response.ok) {
+                  // Product unlisted successfully, show success message
+                  swal("Category unlisted!", {
+                    icon: "success"
+                 
+                }).then(function(){
+                    window.location.href="/admin/category"
+                  });
+                  // Optionally, you can update the UI here
+                } else {
+                  // Error occurred, show error message
+                  swal("Error", "Failed to unlist category", "error");
+                }
+              })
+              .catch(error => {
+                // Network error, show error message
+                swal("Error", "Failed to unlist category", "error");
+              });
+          } else {
+            // User clicked cancel, do nothing
+            swal("Category is safe!");
+          }
+        });
+    }
+</script>
+<script>
+    // List category
+    function listCategory(categoryId) {
+      swal({
+        title: "Are you sure?",
+        text: "Once listed, the category will be visible to users!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+        .then((willList) => {
+          if (willList) {
+            // Perform AJAX request to list the product
+            fetch(`/admin/listCategory/${categoryId}`, {
+              method: 'POST',
+            })
+              .then(response => {
+                if (response.ok) {
+                  // Product listed successfully, show success message
+                  swal("Category listed!", {
+                    icon: "success",
+                  }).then(function(){
+                    window.location.href="/admin/category"
+                  });
+                  // Optionally, you can update the UI here
+                } else {
+                  // Error occurred, show error message
+                  swal("Error", "Failed to list category", "error");
+                }
+              })
+              .catch(error => {
+                // Network error, show error message
+                swal("Error", "Failed to list category", "error");
+              });
+          } else {
+            // User clicked cancel, do nothing
+            swal("Category is still unlisted!");
+          }
+        });
+    }
+  </script>
+  {{!-- delete product --}}
+  <script>
+    function deleteCategory(categoryId) {
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this category!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          // Perform AJAX request to delete the product
+          fetch(`/admin/deleteCategory/${categoryId}`, {
+            method: 'DELETE',
+          })
+            .then(response => {
+              if (response.ok) {
+
+                swal("Poof! Your category has been deleted!", { icon: "success" })
+                .then(function(){
+                  window.location.href="/admin/category"
+                });
+
+              } else {
+                // Error occurred, show error message
+                swal("Error", "Failed to delete category", "error");
+              }
+            })
+            .catch(error => {
+              // Network error, show error message
+              swal("Error", "Failed to delete category", "error");
+            });
+        } else {
+          // User clicked cancel, do nothing
+          swal("Your category is safe!");
+        }
+      });
+    }
+
+  </script>
+<script>
+  // Loop through each data item and update the corresponding table row number
+  document.addEventListener('DOMContentLoaded', function() {
+    const dataRows = document.querySelectorAll('#categoryBody tr');
+    dataRows.forEach((row, index) => {
+      const rowNumberCell = row.querySelector('th[scope="row"]');
+      if (rowNumberCell) {
+        rowNumberCell.textContent = index + 1;
+      }
+    });
+  });
+</script>
+
+
+
+  <script src="/javascript.js"></script>
+
+    
+
+
+</body>
+
+</html>

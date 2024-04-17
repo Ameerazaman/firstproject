@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @media (min-width: 1025px) {
+            .h-custom {
+                height: 100vh !important;
+            }
+        }
+
+        .button {
+            background-color: #04AA6D;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+
+        .button2:hover {
+            background-color: #f9a947;
+            color: white;
+        }
+
+        .button3:hover {
+            background-color: #595f5d;
+            color: white;
+        }
+
+        .button3 {
+            background-color: rgb(141, 139, 139);
+            color: black;
+            border: 2px solid #6c6c6c;
+        }
+
+        .button2 {
+            background-color: rgb(236, 121, 76);
+            color: black;
+            border: 2px solid #f3bb7c;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="h-100 h-custom container">
+        <div class="container py-5 h-100">
+            <div style="width: 100%;" class="row d-flex justify-content-center align-items-center h-100">
+                <div style="width: 100%;" class="col">
+
+
+
+                    <h3 style="text-align: center;">Order Detail</h3>
+
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <h5 class="mb-3"><a href="/user/login" class="text-body"><i
+                                                class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+                                    <hr>
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        {{#if cancel}}
+                                        <div >
+                                            <p style="text-align: center;color: red;">{{this.cancel}}</p>
+                                        </div>
+                                        {{else}}
+                                        <div>
+                                            <a href="/user-profile/order-cancel/{{id}}"><button
+                                                    class="button button2">Cancel</button></a>
+                                            <p style="text-align: center;color: red;">{{this.message
+                                                }}</p>
+                                        </div>
+                                        {{/if}}
+
+                                        
+                                        <div>
+                                            <button class="button button3">Invoice Download</button>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div>
+                                            <h5 style="text-align: center;">Order Date: {{date}}</h5>
+                                        </div>
+                                        <div>
+                                            {{#if message}}
+                                            <h5 style="text-align: center;color: rgb(250, 5, 5);">Status: {{status}}</h5>
+                                            {{else}}
+                                            <h5 style="text-align: center;color: green;">Status: {{status}}</h5>
+                                            {{/if}}
+                                            
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    {{#each data}}
+                                    <div class="card mb-3">
+
+                                        {{#each this.products}}
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div>
+                                                        <img src="/images/{{this.product.image}}"
+                                                            class="img-fluid rounded-3" alt="Shopping item"
+                                                            style="width: 65px;">
+                                                    </div>
+                                                    <div class="ms-3">
+                                                        <h5>{{this.product.product}}</h5>
+                                                        <p class="small mb-0">256GB, Navy Blue</p>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <div style="width: 80px;margin-left: 30px;">
+                                                        <p class="mb-0">{{this.subtotal}}</p>
+                                                    </div>
+
+
+
+                                                    <div style="width: 80px;margin-left: 30px;">
+                                                        <p class="mb-0">{{this.discountProduct}}</p>
+                                                    </div>
+                                                    <a href="/cart/deletecart/{{this._id}}" style="color: #cecece;"><i
+                                                            class="fas fa-trash-alt"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                    </div>
+
+
+                                    {{/each}}
+                                </div>
+
+                                <div class="col-lg-5">
+
+                                    <div class="card bg-primary text-white rounded-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                                <h5 class="mb-0">Payment Option : {{payment}}</h5>
+                                                {{!-- <img
+                                                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
+                                                    class="img-fluid rounded-3" style="width: 45px;" alt="Avatar"> --}}
+
+                                            </div>
+
+                                            <p class="small mb-2">Delivery Address</p>
+                                            {{!-- <a href="#!" type="submit" class="text-white"><i
+                                                    class="fab fa-cc-mastercard fa-2x me-2"></i></a>
+                                            <a href="#!" type="submit" class="text-white"><i
+                                                    class="fab fa-cc-visa fa-2x me-2"></i></a>
+                                            <a href="#!" type="submit" class="text-white"><i
+                                                    class="fab fa-cc-amex fa-2x me-2"></i></a>
+                                            <a href="#!" type="submit" class="text-white"><i
+                                                    class="fab fa-cc-paypal fa-2x"></i></a> --}}
+
+                                            <p>{{addressdata.fullname}}{{addressdata.address}}{{addressdata.city}}
+                                                {{addressdata.state}}{{addressdata.postalcode}}
+                                            </p>
+
+                                            <hr class="my-4">
+
+                                            <div class="d-flex justify-content-between">
+                                                <p class="mb-2">Subtotal</p>
+                                                <p class="mb-2">{{total}}</p>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between">
+                                                <p class="mb-2">Shipping</p>
+                                                <p class="mb-2">Free</p>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between">
+                                                <p class="mb-2">Discount</p>
+                                                <p class="mb-2">{{discount}}</p>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between mb-4">
+                                                <p class="mb-2">Total(Incl. taxes)</p>
+                                                <p class="mb-2">{{totalprice}}</p>
+                                            </div>
+
+                                            {{!-- <button type="button" class="btn btn-info btn-block btn-lg">
+                                                <div class="d-flex justify-content-between">
+
+                                                    <a href="/checkout"><span>Place Order<i
+                                                                class="fas fa-long-arrow-alt-right ms-2"></i></span></a>
+                                                </div>
+                                            </button> --}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

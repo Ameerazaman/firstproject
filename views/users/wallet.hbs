@@ -1,0 +1,455 @@
+{{#if empty}}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My wallet</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .wishlist-container {
+            max-width: 600px;
+           
+            text-align: center;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+       <div class="main-container">
+    <div class="navcontainer">
+            <nav style="background-color: #f9f9f9;" class="nav">
+
+                <div>
+
+                    <div class="option2 nav-option">
+
+                        <i class="fa fa-user"></i>
+                        <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/user-profile">
+                            <h5>Profile</h5>
+                        </a>
+                    </div>
+
+                    <div class="option2 nav-option">
+
+                        <i class="fa fa-address-book"></i>
+                        <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/user-profile/address-mgt">
+                            <h5>Address</h5>
+                        </a>
+                    </div>
+
+
+
+                    <div class="nav-option logout">
+
+                        <i class="fa fa-tag"></i>
+                        <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/user-profile/offer">
+                            <h5>Offer</h5>
+                        </a>
+                    </div>
+                    <div class="nav-option logout">
+
+                        <i class="fa fa-heart"></i>
+                        <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/wishlist">
+                            <h5>Wishlist</h5>
+                        </a>
+                    </div>
+                    <div class="nav-option logout">
+
+                        <i class="fa fa-clipboard"></i>
+                        <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/user-profile/order">
+                            <h5>Order</h5>
+                        </a>
+                    </div>
+                    <div class="nav-option option5">
+
+                        <i class="fa fa-credit-card"></i>
+                        <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/user-profile/wallet">
+                            <h5>Wallet</h5>
+                        </a>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    <br><br>
+    <div style="margin-top: 100px;margin-left: 20%;height: 250px;" class="wishlist-container">
+        <h1>My Wallet</h1>
+        <p>Your wallet is currently empty.</p>
+        <p>Add items to your wallet to keep track of things you want to buy!</p>
+        
+    </div>
+    </div>
+</body>
+
+</html>
+{{else}}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  
+                   initial-scale=1.0">
+    <title>GeeksForGeeks</title>
+
+    <link rel="stylesheet" href="/dashboard.css">
+    {{!-- pagination --}}
+
+    <style>
+        .pagination {
+            margin-top: 10px;
+
+        }
+
+        .pagination button {
+            margin-right: 5px;
+            background-color: rgb(172, 155, 249);
+            border-radius: 10px;
+        }
+
+        .pagination button.active {
+            font-weight: bold;
+        }
+
+        h5 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: black;
+        }
+
+        #checkout-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 675px;
+        }
+
+        #check-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 475px;
+        }
+
+        form>section:first-child {
+            margin-bottom: 50px;
+        }
+
+        form>section>h3 {
+            font-size: var(--text-m);
+            font-weight: 600;
+            color: #333;
+        }
+
+        form .form-group:not(:last-child) {
+            margin-bottom: 12px;
+        }
+
+        form .form-groups {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 25px;
+        }
+
+        form .form-group>label {
+            font-size: var(--text-xs);
+            color: #4F4F4F;
+            font-weight: 600;
+        }
+
+        form .form-group>div {
+            position: relative;
+            margin-top: 7px;
+        }
+
+        form .form-group .material-icons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 15px;
+            font-size: var(--text-m);
+            color: #828282;
+        }
+
+        form .form-group input,
+        form .form-group select {
+            width: 100%;
+            padding: 12px 10px 12px 42px;
+            border-radius: 12px;
+            border: 1px solid #828282;
+            outline: none;
+            font-weight: 600;
+            font-size: var(--text-s);
+        }
+
+        option:disbled {
+            color: #828282;
+        }
+
+        form .form-group,
+        form .form-groups {
+            max-width: 475px;
+        }
+
+        form .form-group.checkbox {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .pagination {
+            margin-top: 10px;
+        }
+
+        .pagination button {
+            margin-right: 5px;
+        }
+
+        .pagination button.active {
+            font-weight: bold;
+        }
+
+        button {
+            padding: 8px;
+            border-radius: 10px;
+            color: aliceblue;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="navcontainer">
+            <nav style="background-color: #f9f9f9;" class="nav">
+
+                <div>
+
+                    <div class="option2 nav-option">
+
+                        <i class="fa fa-user"></i>
+                        <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/user-profile">
+                            <h5>Profile</h5>
+                        </a>
+                    </div>
+
+                    <div class="option2 nav-option">
+
+                        <i class="fa fa-address-book"></i>
+                        <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/user-profile/address-mgt">
+                            <h5>Address</h5>
+                        </a>
+                    </div>
+
+
+
+                    <div class="nav-option logout">
+
+                        <i class="fa fa-tag"></i>
+                        <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/user-profile/offer">
+                            <h5>Offer</h5>
+                        </a>
+                    </div>
+                    <div class="nav-option logout">
+
+                        <i class="fa fa-heart"></i>
+                        <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/wishlist">
+                            <h5>Wishlist</h5>
+                        </a>
+                    </div>
+                    <div class="nav-option logout">
+
+                        <i class="fa fa-clipboard"></i>
+                        <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/user-profile/order">
+                            <h5>Order</h5>
+                        </a>
+                    </div>
+                    <div class="nav-option option5">
+
+                        <i class="fa fa-credit-card"></i>
+                        <a style="text-decoration: none;color: rgb(36, 32, 32);" href="/user-profile/wallet">
+                            <h5>Wallet</h5>
+                        </a>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+        <div class="main">
+
+            <div class="searchbar2">
+                <input type="text" name="" id="" placeholder="Search">
+                <div class="searchbtn">
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png"
+                        class="icn srchicn" alt="search-button">
+                </div>
+            </div>
+
+            <div style="margin-right: auto;">
+               
+                <div style="background-color:rgb(126, 133, 214) ;" class="box box1">
+                    <div class="text">
+                        <h2 class="topic-heading">{{total}}</h2>
+
+                        <i class="fa fa-balance-scale"></i>
+                        <h2 class="topic">My Balance</h2>
+                    </div>
+
+                </div>
+
+                {{!-- <div class="box box2">
+                    <div class="text">
+                        <h2 class="topic-heading">150</h2>
+                        <h2 class="topic">Likes</h2>
+                    </div>
+
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185030/14.png" alt="likes">
+                </div> --}}
+
+                {{!-- <div class="box box3">
+                    <div class="text">
+                        <h2 class="topic-heading">320</h2>
+                        <h2 class="topic">Comments</h2>
+                    </div>
+
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(32).png"
+                        alt="comments">
+                </div>
+
+                <div class="box box4">
+                    <div class="text">
+                        <h2 class="topic-heading">70</h2>
+                        <h2 class="topic">Published</h2>
+                    </div>
+
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185029/13.png" alt="published">
+                </div>
+            </div> --}}
+        </div>
+
+        <div class="report-container">
+            <div class="report-header">
+                <h5 class="recent-Articles">My Wallet</h5>
+
+            </div>
+            <section style="padding-top: 50px; height: auto;" id="s2">
+                <table class="table table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Transaction Id</th>
+
+                            <th scope="col">Transaction Type</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Reason Type</th>
+                            <th scope="col">Date</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="productBody">
+                        {{#each data}}
+
+
+                        <tr>
+
+                            <td>{{this.orderId}}</td>
+                            <td style="color: green;">{{this.transactiontype}}</td>
+                            <td>{{this.totalPrice}}</td>
+                            <td>{{this.reasontype}}</td>
+                            <td>{{this.date}}</td>
+                        </tr>
+                        </a>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </section>
+            </form>
+
+        </div>
+        <div id="pagination" class="pagination">
+            <button style="margin-left: 45%;" id="prevButton">Prev</button>
+            <button id="nextButton">Next</button>
+        </div>
+
+    </div>
+
+    </div>
+
+    <script>
+        const productsPerPage = 5;
+        const tbody = document.getElementById('productBody');
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        let currentPage = 1;
+
+        function displayPage(page) {
+            const startIndex = (page - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+
+            rows.forEach((row, index) => {
+                if (index >= startIndex && index < endIndex) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        function displayPagination() {
+            document.getElementById('prevButton').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayPage(currentPage);
+                }
+            });
+
+            document.getElementById('nextButton').addEventListener('click', () => {
+                const totalPages = Math.ceil(rows.length / productsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayPage(currentPage);
+                }
+            });
+        }
+
+        displayPage(currentPage);
+        displayPagination();
+    </script>
+</body>
+
+</html>
+{{/if}}

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,  
+                   initial-scale=1.0">
+    <title>GeeksForGeeks</title>
+
+    <link rel="stylesheet" href="/dashboard.css">
+    <style>
+        .pagination {
+            margin-top: 10px;
+        }
+
+        .pagination button {
+            margin-right: 5px;
+        }
+
+        .pagination button.active {
+            font-weight: bold;
+        }
+
+        button {
+            padding: 8px;
+            border-radius: 10px;
+            background-color: rgb(58, 86, 249);
+            color: aliceblue;
+
+        }
+
+        button:hover {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="main-container">
+
+        <div class="navcontainer">
+            <nav class="nav">
+                <div>
+                    <div style="background-color: rgb(47, 47, 189);" class="option1 nav-option">
+                        <img src="/images/download.png" class="nav-img" alt="dashboard">
+                        <h5 style="color:white;background-color:  ;"> Main Menu</h5>
+                    </div>
+
+                    <div class="option2 nav-option">
+                        <img src="/images/dashboard.png" class="nav-img" alt="dashboard">
+                        <a href="/admin/dashboard">
+                            <h5> Dashboard</h5>
+                        </a>
+                    </div>
+
+                    <div class="option2 nav-option">
+                        <img src="/images/products.png" class="nav-img" alt="articles">
+                        <a href="/admin/product">
+                            <h5>Products</h5>
+                        </a>
+                    </div>
+
+                    <div class="nav-option option3">
+                        <img src="/images/catogary.png" class="nav-img" alt="report">
+                        <a href="/admin/category">
+                            <h5>Category</h5>
+                        </a>
+                    </div>
+
+                    <div class="nav-option option4">
+                        <img src="/images/order.png" class="nav-img" alt="institution">
+                        <a href="/order">
+                            <h5>Orders</h5>
+                        </a>
+                    </div>
+
+                    <div class="nav-option option5">
+                        <img src="/images/new coupon.png" class="nav-img" alt="blog">
+                        <a href="/coupon">
+                            <h5>Coupon</h5>
+                        </a>
+                    </div>
+
+                    <div class="nav-option option6">
+                        <img src="/images/coupon.png" class="nav-img" alt="settings">
+                        <a href="/referaloffer">
+                            <h5> Offer</h5>
+                        </a>
+                    </div>
+                    <div class="nav-option option6">
+                        <img src="/images/customers.png" class="nav-img" alt="settings">
+                        <a href="/admin/customers">
+                            <h5>Customers</h5>
+                        </a>
+                    </div>
+
+                    <div class="nav-option logout">
+                        <img src="/images/logout.png" class="nav-img" alt="logout">
+                        <a href="/admin/logout">
+                            <h5>Logout</h5>
+                        </a>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+        <div class="main">
+
+            <div class="searchbar2">
+                <input type="text" name="" id="" placeholder="Search">
+                <div class="searchbtn">
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png"
+                        class="icn srchicn" alt="search-button">
+                </div>
+            </div>
+
+            {{!-- <div class="box-container">
+
+                <div class="box box1">
+                    <div class="text">
+                        <h2 class="topic-heading">60.5k</h2>
+                        <h2 class="topic">Article Views</h2>
+                    </div>
+
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(31).png"
+                        alt="Views">
+                </div>
+
+                <div class="box box2">
+                    <div class="text">
+                        <h2 class="topic-heading">150</h2>
+                        <h2 class="topic">Likes</h2>
+                    </div>
+
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185030/14.png" alt="likes">
+                </div>
+
+                <div class="box box3">
+                    <div class="text">
+                        <h2 class="topic-heading">320</h2>
+                        <h2 class="topic">Comments</h2>
+                    </div>
+
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(32).png"
+                        alt="comments">
+                </div>
+
+                <div class="box box4">
+                    <div class="text">
+                        <h2 class="topic-heading">70</h2>
+                        <h2 class="topic">Published</h2>
+                    </div>
+
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185029/13.png" alt="published">
+                </div>
+            </div> --}}
+
+            <div class="report-container">
+                <div class="report-header">
+                    <h1 class="recent-Articles">Customers</h1>
+
+                </div>
+
+
+                <div class="container table-responsive py-5">
+                    <table class="table table-bordered table-hover" z>
+                        <thead class="thead-dark">
+
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Username</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Status</th>
+
+                            </tr>
+                        </thead>
+
+                        </tr>
+                        </thead>
+                        <tbody id="customerBody">
+
+                            {{#each data}}
+
+                            <tr>
+                                <th scope="row">{{@index}}</th>
+                                <td>{{this.username}}</td>
+                                <td>{{this.email}}</td>
+                                <td>{{this.password}}</td>
+                                {{#if this.isBlocked}}
+                                <td>
+                                    <button type="button" id="listProduct" class="btn btn-danger"
+                                        onclick="unblockUser('{{this._id}}')">unblock</button>
+                                </td>
+                                {{else}}
+                                <td>
+                                    <button type="button" id="unlistProduct" class="btn btn-success"
+                                        onclick="blockUser('{{this._id}}')">Block</button>
+                                </td>
+                                {{/if}}
+
+                            </tr>
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+                    <div id="pagination" class="pagination">
+                        <button style="margin-left: 45%;" id="prevButton">Prev</button>
+                        <button id="nextButton">Next</button>
+                    </div>
+                </div>
+                </section>
+
+
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <script src="/javascript.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        const productsPerPage = 5;
+        const tbody = document.getElementById('customerBody');
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        let currentPage = 1;
+
+        function displayPage(page) {
+            const startIndex = (page - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+
+            rows.forEach((row, index) => {
+                if (index >= startIndex && index < endIndex) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        function displayPagination() {
+            document.getElementById('prevButton').addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    displayPage(currentPage);
+                }
+            });
+
+            document.getElementById('nextButton').addEventListener('click', () => {
+                const totalPages = Math.ceil(rows.length / productsPerPage);
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    displayPage(currentPage);
+                }
+            });
+        }
+
+        displayPage(currentPage);
+        displayPagination();
+
+    </script>
+
+    <script>
+        // block user --}}
+        function blockUser(userId) {
+            swal({
+                title: "Are you sure?",
+                text: "Once blocked, the user will not be visible !",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willblock) => {
+                    if (willblock) {
+                        // Perform AJAX request to unlist the product
+                        fetch(`/admin/block/${userId}`, {
+                            method: 'POST',
+                        })
+                            .then(response => {
+                                if (response.ok) {
+                                    // Product unlisted successfully, show success message
+                                    swal("User Blocked!", {
+                                        icon: "success"
+
+                                    }).then(function () {
+                                        window.location.href = "/admin/customers"
+                                    });
+                                    // Optionally, you can update the UI here
+                                } else {
+                                    // Error occurred, show error message
+                                    swal("Error", "Failed to block user", "error");
+                                }
+                            })
+                            .catch(error => {
+                                // Network error, show error message
+                                swal("Error", "Failed to block user", "error");
+                            });
+                    } else {
+                        // User clicked cancel, do nothing
+                        swal("user is safe!");
+                    }
+                });
+        }
+    </script>
+    <script>
+        // List category
+        function unblockUser(userId) {
+            swal({
+                title: "Are you sure?",
+                text: "Once unblock, the user will be visible !",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willUnblock) => {
+                    if (willUnblock) {
+                        // Perform AJAX request to list the product
+                        fetch(`/admin/unblock/${userId}`, {
+                            method: 'POST',
+                        })
+                            .then(response => {
+                                if (response.ok) {
+                                    // Product listed successfully, show success message
+                                    swal("user unblocked!", {
+                                        icon: "success",
+                                    }).then(function () {
+                                        window.location.href = "/admin/customers"
+                                    });
+                                    // Optionally, you can update the UI here
+                                } else {
+                                    // Error occurred, show error message
+                                    swal("Error", "Failed to unblock user", "error");
+                                }
+                            })
+                            .catch(error => {
+                                // Network error, show error message
+                                swal("Error", "Failed to unblock user", "error");
+                            });
+                    } else {
+                        // User clicked cancel, do nothing
+                        swal("User is still unblocked!");
+                    }
+                });
+        }
+    </script>
+   <script>
+    // Loop through each data item and update the corresponding table row number
+    document.addEventListener('DOMContentLoaded', function() {
+        const dataRows = document.querySelectorAll('#customerBody tr');
+        dataRows.forEach((row, index) => {
+            const rowNumberCell = row.querySelector('th[scope="row"]');
+            if (rowNumberCell) {
+                rowNumberCell.textContent = index + 1;
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html>

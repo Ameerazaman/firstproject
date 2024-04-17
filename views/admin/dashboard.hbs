@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,  
+                   initial-scale=1.0">
+  <title>GeeksForGeeks</title>
+
+  <link rel="stylesheet" href="/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .dropbtn {
+      background-color: #ffffff;
+      color: rgb(34, 33, 33);
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fbfcfd;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      padding: 15px;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #e7e5e5
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      background-color: #e3dfdf;
+    }
+
+    a {
+      text-decoration: none;
+      color: rgb(77, 76, 76);
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    }
+
+    p,
+    a,
+    button,
+    h5,
+    h4,
+    h3,
+    h2,
+    h1,
+    h6 {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    }
+
+    button {
+      color: #5500cb;
+
+
+
+
+    }
+
+    td,
+    th {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="navcontainer">
+      <nav class="nav">
+        <div>
+          <div style="background-color: rgb(47, 47, 189);" class="option1 nav-option">
+            <img src="/images/download.png" class="nav-img" alt="dashboard">
+            <h5 style="color:white;background-color:  ;"> Main Menu</h5>
+          </div>
+
+          <div class="option2 nav-option">
+            <img src="/images/dashboard.png" class="nav-img" alt="dashboard">
+            <a href="/admin/dashboard">
+              <h6> Dashboard</h6>
+            </a>
+          </div>
+
+          <div class="option2 nav-option">
+            <img src="/images/products.png" class="nav-img" alt="articles">
+            <a href="/admin/product">
+              <h6>Products</h6>
+            </a>
+          </div>
+
+          <div class="nav-option option3">
+            <img src="/images/catogary.png" class="nav-img" alt="report">
+            <a href="/admin/category">
+              <h6>Category</h6>
+            </a>
+          </div>
+
+          <div class="nav-option option4">
+            <img src="/images/order.png" class="nav-img" alt="institution">
+            <a href="/order">
+              <h6>Orders</h6>
+            </a>
+          </div>
+
+          <div class="nav-option option5">
+            <img src="/images/new coupon.png" class="nav-img" alt="blog">
+            <a href="/coupon">
+              <h6>Coupon</h6>
+            </a>
+          </div>
+
+          <div class="nav-option option6">
+            <img src="/images/coupon.png" class="nav-img" alt="settings">
+            <a href="/referaloffer">
+              <h6> Offer</h6>
+            </a>
+          </div>
+          <div class="nav-option option6">
+            <img src="/images/customers.png" class="nav-img" alt="settings">
+            <a href="/admin/customers">
+              <h6>Customers</h6>
+            </a>
+          </div>
+
+          <div class="nav-option logout">
+            <img src="/images/logout.png" class="nav-img" alt="logout">
+            <a href="/admin/logout">
+              <h6>Logout</h>
+            </a>
+          </div>
+
+        </div>
+      </nav>
+    </div>
+    <div class="main">
+
+      <div class="searchbar2">
+        <input type="text" name="" id="" placeholder="Search">
+        <div class="searchbtn">
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png"
+            class="icn srchicn" alt="search-button">
+        </div>
+      </div>
+      <div style="padding-top: 20px;" class="box-container">
+
+
+
+        <div class="box box2">
+          <div class="text">
+            <h2 class="topic-heading">Users</h2>
+            <h2 class="topic">{{this.totalUsers}}</h2>
+          </div>
+
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185030/14.png" alt="likes">
+        </div>
+
+        <div class="box box3">
+          <div class="text">
+            <h2 class="topic-heading">Revenue</h2>
+            <h2 class="topic">{{this.totalrevenue}}</h2>
+          </div>
+
+
+        </div>
+
+        </a>
+        <div class="box box4">
+          <div class="text">
+            <h2 class="topic-heading">Sales</h2>
+            <h2 class="topic">{{this.sales}}</h2>
+          </div>
+
+          </a>
+          <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210185029/13.png" alt="published">
+        </div>
+      </div>
+      <div class="report-container">
+        <div class="report-header">
+          <h1 class="recent-Articles">Dashboard</h1>
+          <div class="dropdown">
+            <button class="btn dropdown-toggle view"
+              style="width: auto;background-color: white;color: blueviolet;border-color: blueviolet;" type="button"
+              id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+              Sales
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li><button class="dropdown-item" type="button"><a href="/admin/dashboard/daily">Daily</a></button></li>
+              <li><button class="dropdown-item" type="button"><a href="/admin/dashboard/weekly">Weekly</a></button></li>
+              <li><button class="dropdown-item" type="button"><a href="/admin/dashboard/monthly">Monthly</a></button>
+              <li><button class="dropdown-item" type="button"><a href="/admin/dashboard/total">Yearly</a></button>
+              </li>
+            </ul>
+          </div>
+          <form action="/admin/dashboard/customdate" method="post">
+            <div class="dropdown">
+              <button class="dropbtn">Custom Date</button>
+              <div class="dropdown-content">
+                <input style="border: none;border-radius: 10px;color: #5500cb;" type="date" id="expirationDate"
+                  type="date" name="date">
+                <button type="submit" class="view">Filter</button>
+              </div>
+            </div>
+
+          </form>
+
+          <button class="view"><a style="color: white;" href="/admin/dash/sales-reports">Sales Report
+            </a></button>
+
+        </div>
+
+        <!-- Canvas element for the chart -->
+
+        {{#if Error}}
+        <span style="color: red; text-align: center;">{{this.Error}}</span>
+        {{else}}
+
+        <br><br>
+        {{#if Message}}
+        <h4 style="text-align: center;text-decoration: underline;">{{this.header}}</h4><br>
+
+        <h4 style="text-align: center;color: red;">{{this.Message}}</h4><br>
+        {{else}}
+        <div style="width: 40%; display: flex; justify-content: space-between; margin-left: 10%;">
+          <div>
+            <!-- Bar chart canvas -->
+            <h5>Bar Chart({{this.header}})</h5>
+
+            <canvas id="myChart" width="400" height="400"></canvas>
+
+          </div>
+          <div style="margin-left: 20%;">
+            <!-- Pie chart canvas -->
+            <h5>Pie Chart (category Sales)</h5>
+            <canvas style="padding: 30px;" id="myPieChart"></canvas>
+
+          </div>
+        </div>
+
+
+
+        <br>
+
+        <div style=" box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);margin: 10px;padding: 20px;">
+          <div style="display: flex;">
+            <h5 style="margin-left: 20%;">Top Categories</h5>
+            <h5 style="margin-left: 40%;">Top products</h5>
+          </div>
+          <div style="display: flex;padding: 20px;">
+
+            <table class="table table-bordered table-hover" style="margin: 10px;">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">TotalAmount</th>
+
+                </tr>
+              </thead>
+
+              <tbody id="productBody">
+                {{#each categoryWiseRevenue}}
+                <tr>
+                  <th id="row" scope="row">{{@index}}</th>
+                  <td>{{this.category}}</td>
+                  <td>{{this.totalAmount}}</td>
+
+
+                </tr>
+
+
+                {{/each}}
+              </tbody>
+            </table>
+
+
+            <table style="margin: 10px;" class="table table-bordered table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">product</th>
+                  <th scope="col">quntity</th>
+
+                </tr>
+              </thead>
+              <tbody id="productBodys">
+                {{#each topSellingProducts }}
+                <tr>
+                  <th id="row" scope="row">{{@index}}</th>
+
+                  <td>{{this._id.product}}</td>
+                  <td>{{this.totalQuantity}}</td>
+
+
+                </tr>
+
+
+                {{/each}}
+                {{/if}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Bootstrap JavaScript files -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <!-- Chart.js script -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Script to initialize the charts -->
+  <script>
+    // Initialize sales chart
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: {{{ label }}},
+      datasets: [{
+        label: '# of Votes',
+        data: {{{ totalSales }}},
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)'
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+      borderWidth: 1
+        }]
+      },
+      options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+    });
+  });
+  </script>
+
+  {{!--
+  <script>
+    // JavaScript code to create the pie chart
+    // Get the canvas element
+    var ctx = document.getElementById('myPieChart').getContext('2d');
+
+    // Define data for the chart
+    var data = {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: 'My First Dataset',
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor: [
+          'red',
+          'blue',
+          'yellow',
+          'green',
+          'purple',
+          'orange'
+        ],
+        hoverOffset: 4
+      }]
+    };
+
+    // Create a new pie chart
+    var myPieChart = new Chart(ctx, {
+      type: 'pie',
+      data: data,
+    });
+  </script> --}}
+
+  <script>
+    // JavaScript code to create the pie chart
+    // Get the canvas element
+    var ctx = document.getElementById('myPieChart').getContext('2d');
+
+    // Define data for the chart
+    var data = {
+      labels: {{{ chartLabels }}},
+    datasets: [{
+      label: 'My First Dataset',
+      data: {{{ chartData }}},
+      backgroundColor: [
+      'red',
+      'purple',
+      'blue',
+      'yellow',
+      'green',
+      'orange'
+    ],
+      hoverOffset: 4
+            }]
+        };
+
+    // Create a new pie chart
+    var myPieChart = new Chart(ctx, {
+      type: 'pie',
+      data: data,
+    });
+  </script>
+
+  <script>
+    // Loop through each data item and update the corresponding table row number
+    document.addEventListener('DOMContentLoaded', function () {
+      const dataRows = document.querySelectorAll('#productBody tr');
+      dataRows.forEach((row, index) => {
+        const rowNumberCell = row.querySelector('th[scope="row"]');
+        if (rowNumberCell) {
+          rowNumberCell.textContent = index + 1;
+        }
+      });
+    });
+  </script>
+  <script>
+    // Loop through each data item and update the corresponding table row number
+    document.addEventListener('DOMContentLoaded', function () {
+      const dataRows = document.querySelectorAll('#productBodys tr');
+      dataRows.forEach((row, index) => {
+        const rowNumberCell = row.querySelector('th[scope="row"]');
+        if (rowNumberCell) {
+          rowNumberCell.textContent = index + 1;
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>

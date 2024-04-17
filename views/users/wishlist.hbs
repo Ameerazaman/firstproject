@@ -1,0 +1,382 @@
+{{#if data}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cart-wrap {
+            padding: 40px 0;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .main-heading {
+            font-size: 19px;
+            margin-bottom: 20px;
+        }
+
+        .table-wishlist table {
+            width: 100%;
+        }
+
+        .table-wishlist thead {
+            border-bottom: 1px solid #e5e5e5;
+            margin-bottom: 5px;
+        }
+
+        .table-wishlist thead tr th {
+            padding: 8px 0 18px;
+            color: #484848;
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        .table-wishlist tr td {
+            padding: 25px 0;
+            vertical-align: middle;
+        }
+
+        .table-wishlist tr td .img-product {
+            width: 72px;
+            float: left;
+            margin-left: 8px;
+            margin-right: 31px;
+            line-height: 63px;
+        }
+
+        .table-wishlist tr td .img-product img {
+            width: 100%;
+        }
+
+        .table-wishlist tr td .name-product {
+            font-size: 15px;
+            color: #484848;
+            padding-top: 8px;
+            line-height: 24px;
+            width: 50%;
+        }
+
+        .table-wishlist tr td.price {
+            font-weight: 600;
+        }
+
+        .table-wishlist tr td .quanlity {
+            position: relative;
+        }
+
+        .total {
+            font-size: 24px;
+            font-weight: 600;
+            color: #8660e9;
+        }
+
+        .display-flex {
+            display: flex;
+        }
+
+        .align-center {
+            align-items: center;
+        }
+
+        .round-black-btn {
+            border-radius: 25px;
+            background: #212529;
+            color: #fff;
+            padding: 5px 20px;
+            display: inline-block;
+            border: solid 2px #212529;
+            transition: all 0.5s ease-in-out 0s;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .round-black-btn:hover,
+        .round-black-btn:focus {
+            background: transparent;
+            color: #212529;
+            text-decoration: none;
+        }
+
+        .mb-10 {
+            margin-bottom: 10px !important;
+        }
+
+        .mt-30 {
+            margin-top: 30px !important;
+        }
+
+        .d-block {
+            display: block;
+        }
+
+        .custom-form label {
+            font-size: 14px;
+            line-height: 14px;
+        }
+
+        .pretty.p-default {
+            margin-bottom: 15px;
+        }
+
+        .pretty input:checked~.state.p-primary-o label:before,
+        .pretty.p-toggle .state.p-primary-o label:before {
+            border-color: #8660e9;
+        }
+
+        .pretty.p-default:not(.p-fill) input:checked~.state.p-primary-o label:after {
+            background-color: #8660e9 !important;
+        }
+
+        .main-heading.border-b {
+            border-bottom: solid 1px #ededed;
+            padding-bottom: 15px;
+            margin-bottom: 20px !important;
+        }
+
+        .custom-form .pretty .state label {
+            padding-left: 6px;
+        }
+
+        .custom-form .pretty .state label:before {
+            top: 1px;
+        }
+
+        .custom-form .pretty .state label:after {
+            top: 1px;
+        }
+
+        .custom-form .form-control {
+            font-size: 14px;
+            height: 38px;
+        }
+
+        .custom-form .form-control:focus {
+            box-shadow: none;
+        }
+
+        .custom-form textarea.form-control {
+            height: auto;
+        }
+
+        .mt-40 {
+            margin-top: 40px !important;
+        }
+
+        .in-stock-box {
+            background: hsl(219, 100%, 50%);
+            font-size: 12px;
+            text-align: center;
+            border-radius: 25px;
+            padding: 4px 15px;
+            display: inline-block;
+            color: #fff;
+        }
+
+        .trash-icon {
+            font-size: 20px;
+            color: #212529;
+        }
+
+        tr {
+
+            box-shadow: 0 20px 27px 0 rgba(227, 226, 226, 0.3);
+        }
+
+        h5,
+        th,
+        td,
+        span,
+        div {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <br><br><br>
+    <div class="cart-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-heading mb-10">
+                        <h5>My wishlist</h5>
+                    </div>
+
+                    <div class="table-wishlist">
+                        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th width="45%">Product Name</th>
+                                    <th width="15%">Unit Price</th>
+                                    <th width="15%">Stock Status</th>
+                                    <th width="15%">Add to Cart</th>
+                                    <th width="10%">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each data}}
+                                <tr style="margin: 20px;">
+                                    <td width="45%">
+                                        <div class="display-flex align-center">
+                                            <div class="img-product">
+                                                <img src="/images/{{this.product.productImage1}}" alt=""
+                                                    class="mCS_img_loaded">
+                                            </div>
+                                            <div class="name-product">
+                                                {{this.product.product}}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td width="15%" class="price">{{this.product.price}}</td>
+                                    <td width="15%"><span class="in-stock-box">{{this.product.status}}</span></td>
+
+                                    <td><button onclick="addToCart('{{this.product._id}}', '{{this.product.quantity}}')"
+                                            class="round-black-btn small-btn">Add to Cart</button>
+                                    </td>
+
+
+                                    <td><button onclick="deleteProduct('{{this._id}}')"><img
+                                                style="height: 20px;width: ;20px" class="img-icon"
+                                                src="data:image/png;base64,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"
+                                                alt=""></button></td>
+                                </tr>
+                                {{/each}}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    function addToCart(id, quantity) {
+        var stock = parseInt(quantity, 10); // Parse the stock quantity as an integer
+
+        if (stock < 1) {
+            Swal.fire({
+                title: 'Out of Stock',
+                text: 'This product is out of stock',
+                icon: 'error',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'OK'
+            });
+        } else {
+            window.location.href = "/wishlist/add-to-cart/" + id;
+        }
+    }
+</script>
+{{!-- delete product from wishlist --}}
+<script>
+    function deleteProduct(productId) {
+        console.log("delete")
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this product!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                // Perform AJAX request to delete the product
+                fetch(`/wishlist/delete/${productId}`, {
+                    method: 'DELETE', // Change method to DELETE
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            // Successful deletion, show success message
+                            return response.json(); // Assuming your server returns JSON data
+                        } else {
+                            // Error occurred, show error message
+                            throw new Error('Failed to delete product');
+                        }
+                    })
+                    .then(data => {
+                        swal("Poof! Your product has been deleted!", { icon: "success" })
+                            .then(function () {
+                                window.location.href = "/wishlist";
+                            });
+                    })
+                    .catch(error => {
+                        // Network error or server error, show error message
+                        swal("Error", error.message, "error");
+                    });
+            } else {
+                // User clicked cancel, do nothing
+                swal("Your product is safe!");
+            }
+        });
+    }
+</script>
+{{else}}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .wishlist-container {
+            max-width: 600px;
+           
+            text-align: center;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <br><br>
+    <div style="margin-top: 150px;margin-left: 30%;" class="wishlist-container">
+        <h1>My Wishlist</h1>
+        <p>Your wishlist is currently empty.</p>
+        <p>Add items to your wishlist to keep track of things you want to buy!</p>
+        <a href="/user/product" class="btn btn-primary">Start Shopping</a>
+    </div>
+</body>
+
+</html>
+{{/if}}

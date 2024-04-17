@@ -1,0 +1,332 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ecommerce Cart/Wishlist Page Design</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<style>
+   footer {
+    width: 100%;
+    background-color: #1f1e1e;
+    
+}
+
+.footer-container .content_1 img {
+    height: 25px;
+    width: 180px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 0;
+}
+
+.footer-container h4 {
+    color:rgb(207, 206, 206);
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+
+.footer-container a {
+    display: block;
+    text-decoration: none;
+    color:rgb(193, 188, 188);
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.footer-container .content_1 p,
+.footer-container .content_4 p {
+    color:rgb(174, 172, 172);
+    margin: 25px 0;
+    font-size: 14px;
+}
+
+.footer-container .content_4 input[type="email"] {
+    background-color: var(--black);
+    border: none;
+    color: var(--white);
+    outline: none;
+    padding: 15px 0;
+}
+
+.footer-container .content_4 .f-mail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-container .content_4 .bx {
+    color: var(--white);
+}
+
+.f-design {
+    width: 100%;
+    color: var(--white);
+    text-align: center;
+}
+
+.f-design .f-design-txt {
+    border-top: 1px solid var(--grey);
+    padding: 25px 0;
+    font-size: 14px;
+    color: var(--grey);
+}
+
+
+
+</style>
+
+<body>
+     <footer>
+        
+        <div style="margin-top: 200px;" class="footer-container container">
+            <div class="content_1">
+            <h3 style="color: #c2c1c1;">App Store</h3>
+                <p>The customer is at the heart of our<br>unique business model, which includes<br>design.</p>
+                <img src="https://i.postimg.cc/Nj9dgJ98/cards.png" alt="cards">
+            </div>
+            <div class="content_2">
+                <h4>SHOPPING</h4>
+                <a href="#sellers">App Store</a>
+                <a href="#sellers">Trending Mobiles</a>
+                <a href="#sellers">Accessories</a>
+                <a href="#sellers">Sale</a>
+            </div>
+            <div class="content_3">
+                <h4>SHOPPING</h4>
+                <a href="./contact.html">Contact Us</a>
+                <a href="https://payment-method-sb.netlify.app/" target="_blank">Payment Method</a>
+                <a href="https://delivery-status-sb.netlify.app/" target="_blank">Delivery</a>
+                <a href="https://codepen.io/sandeshbodake/full/Jexxrv" target="_blank">Return and Exchange</a>
+            </div>
+            <div class="content_4">
+                <h4>NEWLETTER</h4>
+                <p>Be the first to know about new<br>arrivals, look books, sales & promos!</p>
+                <div class="f-mail">
+                    <input type="email" placeholder="Your Email">
+                    <i class='bx bx-envelope'></i>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <div class="f-design">
+            <div class="f-design-txt container">
+                <p>Design and Code by code.sanket</p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+{{!--
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+        body {
+            font-family: 'Muli', sans-serif;
+            height: 100% !important;
+            background-color: #fff !important;
+            padding: 0 !important;
+            margin: 0 !important
+        }
+
+        .container-fluid {
+            margin-top: 101px;
+            color: #000 !important
+        }
+
+        .card {
+            color: #757575 !important;
+            background-color: #fff !important;
+            align-items: center !important;
+            background: url('https://i.imgur.com/9djv5sH.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: right calc(110px + (150 - 110) * ((100vw - 360px) / (1600 - 360))) bottom !important
+        }
+
+        h2 {
+            font-size: calc(25px + (45 - 25) * ((100vw - 360px) / (1600 - 360))) !important
+        }
+
+        h5 {
+            font-size: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important
+        }
+
+        .fa {
+            cursor: pointer;
+            font-size: 21px;
+            margin: 5px 10px 5px 10px !important
+        }
+
+        button {
+            font-size: calc(12px + (13 - 12) * ((100vw - 360px) / (1600 - 320))) !important;
+            padding-left: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
+            padding-right: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important;
+            padding-top: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important;
+            padding-bottom: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important
+        }
+
+        button:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            outline-width: 0
+        }
+
+        li {
+            margin-top: 10px;
+            margin-bottom: 10px
+        }
+
+        input {
+            border: 2px solid green !important
+        }
+
+        .input-group-lg>.custom-select,
+        .input-group-lg>.form-control:not(textarea) {
+            height: calc(40px + (48 - 40) * ((100vw - 360px) / (1600 - 360))) !important
+        }
+
+        input::-webkit-input-placeholder {
+            padding-left: 5px !important;
+            transform: translate3d(0, -4px, 0)
+        }
+
+        input::placeholder {
+            vertical-align: middle !important;
+            font-size: calc(12px + (14 - 12) * ((100vw - 360px) / (1600 - 360))) !important
+        }
+
+        input:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            outline-width: 0
+        }
+
+        img {
+            vertical-align: middle !important;
+            width: 100%;
+            height: auto;
+            width: calc(17px + 6 * ((100vw - 320px) / 680))
+        }
+
+        li:first-child {
+            font-size: 21px !important;
+            font-weight: bold;
+            margin-bottom: calc(40px + (48 - 40) * ((100vw - 360px) / (1600 - 360))) !important;
+            color: #757575 !important
+        }
+
+        footer {
+            color: #757575 !important
+        }
+
+        .social {
+            position: relative;
+            left: -10px
+        }
+
+        .cursor-pointer {
+            cursor: pointer !important;
+            color: green;
+            font-weight: bold
+        }
+    </style>
+</head>
+
+<body>
+    <Important link source from https://bbbootstrap.com/snippets/simple-footer-newsletter-subscription-input-95837754-->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <div class="container-fluid justify-content-center">
+            <div class="row py-5">
+                <div class="col">
+                    <div class="card border-0">
+                        <div class="card-body text-center ">
+                            <h2><b>Let `s have a chat !</b></h2>
+                            <p class="pl-0 ml-0 mb-5">Find out what we can do for your business or home.</p>
+                            <div class="row text-center justify-content-center">
+                                <div class="col-auto">
+                                    <div class="input-group-lg input-group mb-3 "><input type="text"
+                                            class="form-control" placeholder="Enter your e-mail address"
+                                            aria-label="Recipient's username" aria-describedby="button-addon2">
+                                        <div class="input-group-append"><button class="btn btn-success" type="button"
+                                                id="button-addon2"> <b>Submit</b></button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="mx-0 px-0">
+            <footer>
+                <div class="row justify-content-around mb-0 pt-5 pb-0 ">
+                    <div class=" col-11">
+                        <div class="row justify-content-center">
+                            <div class="col-md-3 col-12 font-italic align-items-center mt-md-3 mt-4">
+                                <h5><span> <img
+                                            src="https://extendthemes.com/wp-content/uploads/2018/06/xbox-green-min.png"
+                                            class="img-fluid mb-1 "></span><b class="text-dark"> Key<span
+                                            class="text-muted"> Pass</span></b></h5>
+                                <p class="social mt-md-3 mt-2"> <span><i class="fa fa-facebook "
+                                            aria-hidden="true"></i></span> <span><i class="fa fa-linkedin"
+                                            aria-hidden="true"></i></span> <span><i class="fa fa-twitter"
+                                            aria-hidden="true"></i></span> </p> <small
+                                    class="copy-rights cursor-pointer">&#9400; 2019 EasyGo Digital
+                                    Technologies</small><br> <small>Copyright.All Rights Resered. </small>
+                            </div>
+                            <div class="col-md-3 col-12 my-sm-0 mt-5">
+                                <ul class="list-unstyled">
+                                    <li class="mt-md-3 mt-4">Our Solution</li>
+                                    <li>Intergrated Security Platform</li>
+                                    <li>Core Features</li>
+                                    <li>Product Features</li>
+                                    <li>Pricing</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3 col-12 my-sm-0 mt-5">
+                                <ul class="list-unstyled">
+                                    <li class="mt-md-3 mt-4">Your needs</li>
+                                    <li>Intergrated Security Platform</li>
+                                    <li>Core Features</li>
+                                    <li>Product Features</li>
+                                    <li>Pricing</li>
+                                </ul>
+                            </div>
+                            <div class="col-xl-auto col-md-3 col-12 my-sm-0 mt-5">
+                                <ul class="list-unstyled">
+                                    <li class="mt-md-3 mt-4">Offer</li>
+                                    <li>Intergrated Security Platform</li>
+                                    <li>Core Features</li>
+                                    <li>Product Features</li>
+                                    <li>Pricing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+</body>
+
+</html> --}}

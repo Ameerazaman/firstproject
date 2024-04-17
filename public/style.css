@@ -1,0 +1,639 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    align-items: stretch;
+}
+
+.left-section {
+    background: url('https://img.freepik.com/premium-vector/man-freelancer-sits-table-cafe-working-laptop-remote-worker-drinking-beverage-coworking-space-workplace-cafeteria-restaurant_575670-1291.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1702771200&semt=ais') no-repeat center center;
+    display: none;
+}
+
+.right-section {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgb(10 75 90);
+    width: 100%;
+    max-width: 450px;
+}
+
+.login-form h2 {
+    color: #ffb144;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.login-title i {
+    margin-right: 10px;
+    color: #027186;
+}
+
+.form-control {
+    position: relative;
+    margin-bottom: 30px;
+    border: none;
+}
+
+.form-control i {
+    position: absolute;
+    left: 25px;
+    top: 35%;
+    color: #32495e;
+}
+
+.form-control input {
+    width: 100%;
+    max-width: 95%;
+    padding: 12px 0 12px 37px;
+    border: 2px solid #00569f1c;
+    background-color: rgb(232, 232, 232);
+    color: rgb(50, 73, 94);
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.form-control input:focus {
+    outline: none;
+    border: 2px solid #ffd8a1;
+}
+
+.form-control input:invalid:not(:focus):not(:placeholder-shown) {
+    border: 2px solid #ff3860;
+}
+
+
+
+.social-login {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.social-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    line-height: 40px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+
+
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background-color: #ffaa33;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover {
+    background-color: #405d7d;
+}
+
+/*Responsive*/
+@media screen and (min-width: 768px) {
+    .left-section {
+        display: block;
+        /* Show the left section on larger screens */
+        flex: 1;
+    }
+}
+
+
+
+/* Collapsed sidebar styles */
+aside.collapsed nav ul li a {
+    display: none;
+}
+
+aside.collapsed #sidebar-toggle::after {
+    content: '\2261';
+}
+
+aside #sidebar-toggle {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 24px;
+    outline: none;
+    padding: 5px;
+}
+
+
+/* Collapsed sidebar styles */
+aside.collapsed nav ul li a {
+    display: none;
+}
+
+aside.collapsed #sidebar-toggle::after {
+    content: '\2261';
+}
+
+aside #sidebar-toggle {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 24px;
+    outline: none;
+    padding: 5px;
+}
+
+@media (max-width: 768px) {
+    aside {
+        width: 80px;
+    }
+
+    aside.collapsed {
+        width: 80px;
+    }
+
+    aside.collapsed #sidebar-toggle::after {
+        content: '\2261';
+    }
+}
+
+/* *******************************User haeder**************** */
+.main-navbar {
+    border-bottom: 1px solid #ccc;
+    position: relative; /* Ensure position context for sticky */
+}
+
+.main-navbar .top-navbar {
+    background-color: #2874f0;
+   position: sticky;
+    top: 0; /* Stick to the top of the viewport */
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+
+.main-navbar .top-navbar .brand-name {
+    color: #fff;
+}
+
+.main-navbar .top-navbar .nav-link {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.main-navbar .top-navbar .dropdown-menu {
+    padding: 0;
+    border-radius: 0;
+}
+
+.main-navbar .top-navbar .dropdown-menu .dropdown-item {
+    padding: 8px 16px;
+    border-bottom: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.main-navbar .top-navbar .dropdown-menu .dropdown-item i {
+    width: 20px;
+    text-align: center;
+    color: #2874f0;
+    font-size: 14px;
+}
+
+.main-navbar .navbar {
+    padding: 0;
+    background-color: #ddd;
+}
+
+.main-navbar .navbar .nav-item .nav-link {
+    padding: 8px 20px;
+    color: #000;
+    font-size: 15px;
+}
+
+@media only screen and (max-width: 900px) {
+    .main-navbar .top-navbar .nav-link {
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    .main-navbar .top-navbar .dropdown-menu .dropdown-item {
+        padding: 5px;
+        border-bottom: 1px solid #ccc;
+        font-size: 12px;
+    }
+
+    .main-navbar .top-navbar .dropdown-menu .dropdown-item i {
+        width: 20px;
+        text-align: center;
+        color: #2874f0;
+        font-size: 12px;
+    }
+
+    .main-navbar .navbar {
+        padding: 0;
+        background-color: #ddd;
+    }
+
+    .main-navbar .navbar .nav-item .nav-link {
+        padding: 5px;
+        color: #000;
+        font-size: 12px;
+    }
+
+    .form-control {
+        width: 500px;
+    }
+
+    .main-navbar .top-navbar {
+        background-color: #2874f0;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+
+/********************************** product detail page***************************** */
+
+/* Preview images */
+.previews img {
+    width: 100%;
+    height: 140px;
+}
+
+.main-description .category {
+    text-transform: uppercase;
+    color: #0093c4;
+}
+
+.main-description .product-title {
+    font-size: 2.5rem;
+}
+
+.old-price-discount {
+    font-weight: 600;
+}
+
+.new-price {
+    font-size: 2rem;
+}
+
+.details-title {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #757575;
+}
+
+.buttons .block {
+    margin-right: 5px;
+}
+
+.quantity input {
+    border-radius: 0;
+    height: 40px;
+
+}
+
+
+.custom-btn {
+    text-transform: capitalize;
+    background-color: #0093c4;
+    color: white;
+    width: 150px;
+    height: 40px;
+    border-radius: 0;
+}
+
+.custom-btn:hover {
+    background-color: #0093c4 !important;
+    font-size: 18px;
+    color: white !important;
+}
+
+.similar-product img {
+    height: 400px;
+}
+
+.similar-product {
+    text-align: left;
+    height: auto;
+}
+
+.similar-product .title {
+    margin: 17px 0px 4px 0px;
+}
+
+.similar-product .price {
+    font-weight: bold;
+}
+
+.questions .icon i {
+    font-size: 2rem;
+}
+
+.questions-icon {
+    font-size: 2rem;
+    color: #0093c4;
+}
+
+.button {
+    background-color: #eeeeee;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0093c4;
+    
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+
+    /* Make preview images responsive  */
+    .previews img {
+        width: 100%;
+        height: auto;
+    }
+
+}
+.container {
+    max-width:auto;
+    margin: 0 auto;
+  }
+  .product-thumbs .swiper-slide img {
+    border:2px solid transparent;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  .product-thumbs .swiper-slide-active img {
+    border-color: #bc4f38;
+  }
+  .product-slider .swiper-button-next:after,
+  .product-slider .swiper-button-prev:after {
+      font-size: 20px;
+      color: #000;
+      font-weight: bold;
+  }
+
+
+  /* Pagination */
+  #card-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* CSS for individual card */
+
+  /* CSS for pagination */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  /* **********************************product detai page */
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+body{
+    line-height: 1.5;
+}
+.card-wrapper{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+img{
+    width: 100%;
+    display: block;
+}
+.img-display{
+    overflow: hidden;
+}
+.img-showcase{
+    display: flex;
+    width: 100%;
+    transition: all 0.5s ease;
+}
+.img-showcase img{
+    min-width: 100%;
+}
+.img-select{
+    display: flex;
+}
+.img-item{
+    margin: 0.3rem;
+}
+.img-item:nth-child(1),
+.img-item:nth-child(2),
+.img-item:nth-child(3){
+    margin-right: 0;
+}
+.img-item:hover{
+    opacity: 0.8;
+}
+.product-content{
+    padding: 2rem 1rem;
+}
+.product-title{
+    font-size: 3rem;
+    text-transform: capitalize;
+    font-weight: 700;
+    position: relative;
+    color: #12263a;
+    margin: 1rem 0;
+}
+.product-title::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 80px;
+    background: #12263a;
+}
+.product-link{
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    background: #256eff;
+    color: #fff;
+    padding: 0 0.3rem;
+    transition: all 0.5s ease;
+}
+.product-link:hover{
+    opacity: 0.9;
+}
+.product-rating{
+    color: #ffc107;
+}
+.product-rating span{
+    font-weight: 600;
+    color: #252525;
+}
+.product-price{
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.product-price span{
+    font-weight: 400;
+}
+.last-price span{
+    color: #f64749;
+    text-decoration: line-through;
+}
+.new-price span{
+    color: #256eff;
+}
+.product-detail h2{
+    text-transform: capitalize;
+    color: #12263a;
+    padding-bottom: 0.6rem;
+}
+.product-detail p{
+    font-size: 0.9rem;
+    padding: 0.3rem;
+    opacity: 0.8;
+}
+.product-detail ul{
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+.product-detail ul li{
+    margin: 0;
+    list-style: none;
+    background: url(https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/checked.png) left center no-repeat;
+    background-size: 18px;
+    padding-left: 1.7rem;
+    margin: 0.4rem 0;
+    font-weight: 600;
+    opacity: 0.9;
+}
+.product-detail ul li span{
+    font-weight: 400;
+}
+.purchase-info{
+    margin: 1.5rem 0;
+}
+.purchase-info input,
+.purchase-info .btn{
+    border: 1.5px solid #ddd;
+    border-radius: 25px;
+    text-align: center;
+    padding: 0.45rem 0.8rem;
+    outline: 0;
+    margin-right: 0.2rem;
+    margin-bottom: 1rem;
+}
+.purchase-info input{
+    width: 60px;
+}
+.purchase-info .btn{
+    cursor: pointer;
+    color: #fff;
+}
+.purchase-info .btn:first-of-type{
+    background: #256eff;
+}
+.purchase-info .btn:last-of-type{
+    background: #f64749;
+}
+.purchase-info .btn:hover{
+    opacity: 0.9;
+}
+.social-links{
+    display: flex;
+    align-items: center;
+}
+.social-links a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: #000;
+    border: 1px solid #000;
+    margin: 0 0.2rem;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.5s ease;
+}
+.social-links a:hover{
+    background: #000;
+    border-color: transparent;
+    color: #fff;
+}
+
+@media screen and (min-width: 992px){
+    .card{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5rem;
+    }
+    .card-wrapper{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .product-imgs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .product-content{
+        padding-top: 0;
+    }
+}
