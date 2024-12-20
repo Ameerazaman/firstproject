@@ -86,5 +86,5 @@ app.use('/checkout',checkout)
 app.use("/user-profile",userprofile)
 app.use("/wishlist",wishlist)
 
-const port = process.env.port;
+const port = process.env.port||3004;
 app.listen(port, console.log("server started"))

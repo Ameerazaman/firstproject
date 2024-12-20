@@ -328,7 +328,6 @@
 
                     <div class="delivery-info">
                         <div class="head-box">
-                            <h5>Delivery Information</h5>
 
 
                             {{#if resultadd}}
@@ -355,13 +354,14 @@
                             <div class="address">
 
                                 <i style="color: rgb(53, 127, 238);" class="fa fa-address-book"></i>
-                                <span>   {{this.address}} ,{{this.city}}, {{this.state}},
+                                <span> {{this.address}} ,{{this.city}}, {{this.state}},
                                     {{this.postalcode}}</span>
                             </div>
 
                             <div class="address">
 
-                                <i style="color: rgb(53, 127, 238);" class="fa fa-phone"></i><span>  {{this.phone}}</span>
+                                <i style="color: rgb(53, 127, 238);" class="fa fa-phone"></i><span>
+                                    {{this.phone}}</span>
                             </div>
 
                             <div class="address">
@@ -413,7 +413,7 @@
                 document.getElementById("city-error").innerHTML = 'This field is required'
                 e.preventDefault()
             }
-           else if (/^\s|\s$/.test(city)) {
+            else if (/^\s|\s$/.test(city)) {
                 document.getElementById("city-error").innerHTML = 'space are not allowed'
                 e.preventDefault()
             }

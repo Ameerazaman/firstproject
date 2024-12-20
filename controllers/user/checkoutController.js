@@ -27,6 +27,7 @@ const checkoutPage = async (req, res) => {
 
         const userId = req.session.user._id
         const productId = req.session.productId
+        console.log("product Id", productId)
         const data = await cart.aggregate([
             { $match: { userId: userId } },
             { $unwind: "$products" },
@@ -65,6 +66,7 @@ const checkoutPage = async (req, res) => {
                 },
             }
         ]);
+        console.log(data, "data")
         const result = await cart.aggregate([
             { $match: { userId: userId } },
             { $unwind: "$products" },
@@ -119,7 +121,7 @@ const checkoutPage = async (req, res) => {
         ]);
         // Calculate total price of all products in the cart
         // Const totalPrice = data.reduce((total, product) => total + product.subtotal, 0);
-
+        console.log(result, "result")
         const usersId = req.session.user._id
         const resultadd = await address.find({ userId: userId }).lean()
         const userdata = await User.findOne({ _id: usersId }).lean()
@@ -138,18 +140,21 @@ const checkoutPage = async (req, res) => {
         for (let i = 0; i < data.length; i++) {
             console.log(data[i].quantity, data[i].product.quantity, "quantity")
             if (data[i].quantity > data[i].product.quantity) {
+                console.log("outof stock")
                 const Outofstock = "One product is out of stock"
                 res.render("users/cart", { Outofstock, categoryOffer: req.session.categoryOffer, data, result, totalPrice, resultadd, userdata })
             }
-            else {
-
-                res.render("users/checkout", { couponDiscount, categoryOffer: req.session.categoryOffer, shippingCharge, coupondata, data, result, resultadd, userdata, totalPrice })
-            }
         }
+
+        console.log(couponDiscount, "discount", req.session.categoryOffer, "categoryoffer", shippingCharge, "ship", coupondata, "coupondata", data, "data", result, "result", resultadd, "resultadd", userdata, "userdata", totalPrice, "total")
+        console.log("checkout page")
+        res.render("users/checkout", { couponDiscount, categoryOffer: req.session.categoryOffer, shippingCharge, coupondata, data, result, resultadd, userdata, totalPrice })
+
     }
+    
     catch (error) {
-        console.log("Error in checkOut page")
-    }
+    console.log("Error in checkOut page")
+}
 
 }
 
